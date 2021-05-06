@@ -32,3 +32,5 @@ function progressBar() {
         progress.classList.remove("progress-container");
     }
 }
+
+/***************************************************** */

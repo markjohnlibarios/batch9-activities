@@ -10,6 +10,7 @@ body {
     font-family: "Poppins", sans-serif;
 }
 
+//nav bar component **************************
 #header {
     position: fixed;
     display: flex;
@@ -22,7 +23,6 @@ body {
     z-index: 1;
     width: 100%;
     height: 70px;
-    //background-image: $header-gradient;
     background: transparent;
     transition: background 250ms ease-in;
     .logo {
@@ -32,25 +32,24 @@ body {
     }
     .account-icon {
         font-size: 35px;
-        color: #fff;
+        color: $white;
         &:after, &:after {
             transition: all .5s;
         }
         &:hover{
-            color: #F85973;
+            color: $hover;
         }
     }
     .menu-icon {
-        //width: 28px;
         margin-left: 20px;
         display: none;
         font-size: 35px;
-        color: #fff;
+        color: $white;
     }
 }
 
 .nav-scrolled {
-    background: #CD2733 !important;
+    background: $dominant !important;
 }
 
 nav {
@@ -64,7 +63,7 @@ nav {
             margin-right: 20px;
             a {
                 text-decoration: none;
-                color: #fff;
+                color: $white;
                 font-size: 17px;
                 background: transparent;
                 border-radius: 5px;
@@ -74,7 +73,7 @@ nav {
                     transition: all .5s;
                 }
                 &:hover{
-                    color: #F85973;
+                    color: $hover;
                 }
             }
         }
@@ -93,7 +92,7 @@ margin: auto;
 width: 0%;
 content: '.';
 color: transparent;
-background: #fff;
+background: $white;
 height: 2px;
 }
 nav.stroke ul li a:hover:after {
@@ -110,12 +109,12 @@ width: 100%;
 }
 .progress-bar {
     height: 5px;
-    background: #7D4897;
+    background: $progress-load-bar;
     width: 0%;
 }
 
 
-//containers component
+//containers component ************************
 .container {
     max-width: 1300px;
     margin: auto;
@@ -139,7 +138,6 @@ width: 100%;
     margin-top: -5px;
     position: relative;
     background-image: url(../img/1.png);
-    //background-image: url(../img/1.png);
     width: 100%;
     height: 100vh;
     background-repeat: no-repeat;
@@ -150,10 +148,8 @@ width: 100%;
         padding: 5px;
         position: absolute;
         top: 35%;
-        //left: 50%;
-        //transform: translate(-50%, -50%);
         text-align: left;
-        color: #fff;
+        color: $white;
         letter-spacing: 5px;
         text-transform: uppercase;
         h1 {
@@ -172,14 +168,196 @@ width: 100%;
     }
 }
 
+//footer component ***********************************
+.footer {
+    background: $black;
+    color: $text-color;
+    font-size: 14px;
+    padding: 0 0 20px;
+    p {
+        color: $text-color;
+    }
+    h3 {
+        color: $white;
+        margin-bottom: 20px;
+    }
+    .footer-col-1, .footer-col-2, .footer-col-3, .footer-col-4 {
+        min-width: 250px;
+        margin-bottom: 20px;
+    }
+    .footer-col-1 {
+        //flex: 1;
+        flex-basis: 30%;
+        text-align: center;
+        img {
+            width: 180px;
+            cursor: pointer;
+        }
+    }
+    .footer-col-2 {
+        //lex-basis: 30%;
+        flex: 1;
+        text-align: center;
+        .app-logo {
+            margin-top: 20px;
+            cursor: pointer;
+            img {
+                width: 140px;
+            }
+        }
+    }
+    .footer-col-3, .footer-col-4 {
+        flex-basis: 12%;
+        text-align: center;
+        ul {
+            list-style-type: none;
+            li {
+                transition: transform 0.5s;
+                &:hover{
+                    transform: translateY(-5px);
+                }
+                a {
+                    text-decoration: none;
+                    color: $text-color;
+                    &:hover{
+                        color: $hover;
+                    }
+                }
+            }
+        }
+    }
+    hr {
+        border: none;
+        background: $grey;
+        height: 1px;
+        margin: 20px 0;
+    }
+    .copyright {
+        text-align: center;
+    }
+}
 
-//media query declare here
+//login component ***********************************
+.login-container{
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.75)), url(../img/login.png);
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+}
+
+.login-container-sub {
+    max-width: 1300px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 10%;
+}
+
+.form-container {
+    left: 5%;
+    margin-top: 70%;
+    background: $white;
+    width: 300px;
+    height: 400px;
+    position: relative;
+    text-align: center;
+    padding: 20px 0;
+    margin: auto;
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+    border-radius: 25px;
+    .form-btn {
+        display: inline-block;
+    }
+    span {
+        font-weight: bold;
+        padding: 0 10px;
+        color: #555;
+        cursor: pointer;
+        width: 100px;
+        display: inline-block;
+    }
+    form {
+        max-width: 300px;
+        padding: 0 20px;
+        position: absolute;
+        top: 130px;
+        transition: transform 1s;
+        .btn {
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            margin: 10px 0;
+            &:focus {
+                outline: none;
+            }
+        }
+        a {
+            font-size: 12px;
+            text-decoration: none;
+            color: $text-color;
+        }
+    }
+    form input {
+        width: 100%;
+        height: 30px;
+        margin: 10px 0;
+        padding: 0 10px;
+        border: 1px solid $dark-grey;
+    }
+}
+
+.btn {
+    display: inline-block;
+    background: $login-button;
+    color: $white;
+    padding: 8px 30px;
+    margin: 30px 0;
+    border-radius: 30px;
+    transition: background 0.5s;
+    &:hover {
+        background: #563434;
+    }
+}
+
+#form {
+    left: -300px;
+}
+
+#reg-form {
+    left: 0;
+}
+
+#indicator {
+    width: 100px;
+    border: none;
+    background: $login-button;
+    height: 3px;
+    margin-top: 8px;
+    transform: translateX(100px);
+    transition: transform 1s;
+}
+
+
+//media query declare here ****************************
+/*@media only screen and (max-width: 600px) {
+    .row {
+        text-align: center;
+    }
+
+    .col-2, .col-3, .col-4 {
+        flex-basis: 100%;
+    }
+}*/
 @media screen and (max-width: 555px) {
     nav ul {
         position: absolute;
         top: 69px;
         left: 0;
-        background: #333;
+        background: $dark-grey;
         width: 100%;
         overflow: hidden;
         transition: max-height 0.5s;
@@ -187,7 +365,7 @@ width: 100%;
             display: block;
             margin: 10px 50px 10px 0;
             a {
-                color: #fff;                
+                color: $white;                
             }
         }
     }
@@ -202,7 +380,7 @@ width: 100%;
     }
 
     #header {
-        background: #CD2733 !important;
+        background: $dominant !important;
     }
 
     #progress{
