@@ -20,7 +20,8 @@ body {
   z-index: 1;
   width: 100%;
   height: 70px;
-  background-color: #CD2733;
+  background: transparent;
+  transition: background 250ms ease-in;
 }
 #header .logo img {
   width: 180px;
@@ -29,11 +30,21 @@ body {
   font-size: 35px;
   color: #fff;
 }
+#header .account-icon:after, #header .account-icon:after {
+  transition: all 0.5s;
+}
+#header .account-icon:hover {
+  color: #F85973;
+}
 #header .menu-icon {
   margin-left: 20px;
   display: none;
   font-size: 35px;
   color: #fff;
+}
+
+.nav-scrolled {
+  background: #CD2733 !important;
 }
 
 nav {
@@ -55,6 +66,7 @@ nav ul li a {
   background: transparent;
   border-radius: 5px;
   text-transform: uppercase;
+  letter-spacing: 3px;
 }
 nav ul li a:after, nav ul li a:after {
   transition: all 0.5s;
@@ -89,7 +101,7 @@ nav.stroke ul li a:hover:after {
   width: 100%;
   height: 5px;
   background: transparent;
-  margin-top: 70px;
+  margin-top: 75px;
   z-index: 1;
 }
 
@@ -104,7 +116,7 @@ nav.stroke ul li a:hover:after {
   margin: auto;
   padding-left: 25px;
   padding-right: 25px;
-  padding-top: 75px;
+  padding-top: 70px;
 }
 
 .row {
@@ -119,19 +131,40 @@ nav.stroke ul li a:hover:after {
 }
 
 .col-cover {
+  margin-top: -5px;
   position: relative;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)), url(../img/future-banking.jpg);
+  background-image: url(../img/1.png);
   width: 100%;
   height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
-  text-align: center;
+  animation: slide 20s infinite;
+}
+.col-cover .content {
+  margin-left: 10px;
+  padding: 5px;
+  position: absolute;
+  top: 35%;
+  text-align: left;
+  color: #fff;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+.col-cover .content h1 {
+  font-size: 30px;
 }
 
-/*.banner {
-    background: radial-gradient(#fff, #ffd6d6);
-}*/
-@media screen and (max-width: 507px) {
+.img-loader {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+.img-loader img {
+  width: 0;
+  height: 0;
+}
+
+@media screen and (max-width: 555px) {
   nav ul {
     position: absolute;
     top: 69px;
@@ -157,11 +190,48 @@ nav.stroke ul li a:hover:after {
   .col-cover {
     display: none;
   }
+
+  #header {
+    background: #CD2733 !important;
+  }
+
+  #progress {
+    position: fixed;
+    margin-top: 70px;
+    width: 100%;
+    height: 5px;
+    background: transparent;
+    z-index: 1;
+  }
 }
 @media only screen and (max-width: 302px) {
   #header .logo img {
     display: none;
   }
-}
 
-/*# sourceMappingURL=style.css.map */
+  #progress {
+    position: fixed;
+    width: 100%;
+    height: 5px;
+    background: transparent;
+    margin-top: 70px;
+    z-index: 1;
+  }
+}
+@keyframes slide {
+  20% {
+    background-image: url(../img/2.png);
+  }
+  40% {
+    background-image: url(../img/3.png);
+  }
+  60% {
+    background-image: url(../img/4.png);
+  }
+  80% {
+    background-image: url(../img/5.png);
+  }
+  100% {
+    background-image: url(../img/1.png);
+  }
+}
