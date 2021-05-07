@@ -6,8 +6,13 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
 }
 
 //nav bar component **************************
@@ -33,6 +38,7 @@ body {
     .account-icon {
         font-size: 35px;
         color: $white;
+        cursor: pointer;
         &:after, &:after {
             transition: all .5s;
         }
@@ -76,14 +82,31 @@ nav {
                     color: $hover;
                 }
             }
+            p {
+                text-decoration: none;
+                color: $white;
+                font-size: 17px;
+                background: transparent;
+                border-radius: 5px;
+                text-transform: uppercase;
+                letter-spacing: 3px;
+                cursor: pointer;
+                &:after, &:after {
+                    transition: all .5s;
+                }
+                &:hover{
+                    color: $hover;
+                }
+            }
         }
     }
 }
 
-nav.stroke ul li a {
+nav.stroke ul li a, nav.stroke ul li p {
 position: relative;
 }
-nav.stroke ul li a:after {
+
+nav.stroke ul li a:after, nav.stroke ul li p:after {
 position: absolute;
 bottom: 0;
 left: 0;
@@ -95,7 +118,8 @@ color: transparent;
 background: $white;
 height: 2px;
 }
-nav.stroke ul li a:hover:after {
+
+nav.stroke ul li a:hover:after, nav.stroke ul li p:hover:after {
 width: 100%;
 }
 
@@ -120,18 +144,48 @@ width: 100%;
     margin: auto;
     padding-left: 25px;
     padding-right: 25px;
-    padding-top: 70px;
+    padding-top: 60px;
 }
 
-.row {
+.container-content {
+    max-width: 1300px;
+    margin: auto;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    overflow: hidden;
+}
+
+.row, .row-sub {
     display: flex;
-    align-items: center;
     flex-wrap: wrap;
     justify-content: space-around;
+    align-items: center;
+    margin-top: 0;
     .col-2 {
         flex-basis: 50%;
         min-width: 300px;
+        img {
+            display: block;
+            width: 100% !important;
+            max-width: 500px;
+            height: auto;
+            margin: auto;
+            border-radius: 20px;
+            box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
+        }
+        p {
+            font-size: 14px;
+        }
     }
+}
+
+.row-sub-last {
+    margin-bottom: 20px;
+}
+
+.row-sub {
+    margin-top: 20px !important;
 }
 
 .col-cover{
@@ -168,6 +222,106 @@ width: 100%;
     }
 }
 
+//content component ***********************************
+.small-container{
+    max-width: 1080px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.col-3{
+    flex-basis: 33%;
+    min-width: 250px;
+    margin-bottom: 10px;
+    img{
+        width: 100%;
+    }
+}
+
+.rating{
+    .fa{
+        color: $dominant;
+    }
+}
+
+.services{
+    padding-top: 60px;
+    .col-3{
+        text-align: center;
+        padding: 20px 30px;
+        //box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
+        //cursor: pointer;
+        /*transition: transform 0.5s;
+        &:hover{
+            transform: translateY(-10px);
+        }*/
+        img{
+            width: 70%;
+            margin-top: 0;
+            //border-radius: 50%;
+        }
+        .fa.fa-quote-left{
+            font-size: 34px;
+            color: $dominant;
+        }
+        p{
+            font-size: 12px;
+            margin: 5px 0;
+            color: $text-color;
+            text-align: justify;
+        }
+        h3{
+            font-weight: 600;
+            color: $dark-grey;
+            font-size: 18px;
+        }
+    }
+}
+
+#about {
+    &:target:before {
+        content: "";
+        display: block;
+        height: 100px;
+        margin: -100px 0 0;
+    }
+    p {
+        text-align: justify;
+        display: block;
+        max-width: 600px;
+        height: auto;
+        margin: auto;
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 250ms ease-in;
+}
+
+.appear {
+    opacity: 1;
+}
+
+.from-left {
+    transform: translateX(-50%);
+}
+
+.from-right {
+    transform: translateX(50%);
+}
+
+.from-left, .from-right {
+    transition: opacity 250ms ease-in, transform 400ms ease-in;
+    opacity: 0;
+}
+
+.from-left.appear, .from-right.appear {
+    transform: translateX(0);
+    opacity: 1;
+}
+
 //footer component ***********************************
 .footer {
     background: $black;
@@ -186,8 +340,7 @@ width: 100%;
         margin-bottom: 20px;
     }
     .footer-col-1 {
-        //flex: 1;
-        flex-basis: 30%;
+        flex: 1;
         text-align: center;
         img {
             width: 180px;
@@ -195,8 +348,7 @@ width: 100%;
         }
     }
     .footer-col-2 {
-        //lex-basis: 30%;
-        flex: 1;
+        flex-basis: 30%;
         text-align: center;
         .app-logo {
             margin-top: 20px;
@@ -236,6 +388,8 @@ width: 100%;
         text-align: center;
     }
 }
+
+//modal component ***********************************
 
 //login component ***********************************
 .login-container{
@@ -295,10 +449,10 @@ width: 100%;
                 outline: none;
             }
         }
-        a {
+        p {
             font-size: 12px;
-            text-decoration: none;
             color: $text-color;
+            cursor: pointer;
         }
     }
     form input {
@@ -342,16 +496,125 @@ width: 100%;
 }
 
 
-//media query declare here ****************************
-/*@media only screen and (max-width: 600px) {
-    .row {
-        text-align: center;
-    }
+//registration component ***********************************
+#snackbar {
+    visibility: hidden; 
+    min-width: 87%;
+    margin-left: -125px; 
+    color: $white; 
+    text-align: center; 
+    border-radius: 5px; 
+    padding: 16px; 
+    position: absolute; 
+    z-index: 1; 
+    left: 48%; 
+    bottom: 280px;
+}
 
-    .col-2, .col-3, .col-4 {
-        flex-basis: 100%;
+#snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+#spinner {
+    visibility: hidden;
+    min-width: 87%;
+    margin-left: -125px;
+    color: $success; 
+    text-align: center; 
+    border-radius: 5px; 
+    padding: 16px; 
+    position: absolute; 
+    z-index: 1; 
+    left: 48%; 
+    bottom: 180px;
+    font-size: 40px !important;
+}
+
+#spinner.show {
+    visibility: visible;
+}
+
+//account nav bar component **************************
+#header-account {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    top: 0;
+    padding: 10px;
+    z-index: 1;
+    width: 100%;
+    height: 70px;
+    background: $dominant;
+    transition: background 250ms ease-in;
+    .logo {
+        img {
+            width: 180px;
+        }
     }
-}*/
+    .account-icon {
+        font-size: 35px;
+        color: $white;
+        cursor: pointer;
+        &:after, &:after {
+            transition: all .5s;
+        }
+        &:hover{
+            color: $hover;
+        }
+    }
+    .menu-icon {
+        margin-left: 20px;
+        display: none;
+        font-size: 35px;
+        color: $white;
+    }
+}
+
+.account-container {
+    max-width: 1300px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 100px;
+}
+
+#account-progress {
+    position: fixed;
+    width: 100%;
+    height: 5px;
+    background: transparent;
+    margin-top: 70px;
+    z-index: 1;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+    from {left: 0; opacity: 0;}
+    to {left:  48%; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {left: 0; opacity: 0;}
+    to {left:  48%; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {left:  48%; opacity: 1;}
+    to {left: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {left:  48%; opacity: 1;}
+    to {left: 0; opacity: 0;}
+}
+
+
+//media query declare here ****************************
 @media screen and (max-width: 555px) {
     nav ul {
         position: absolute;
@@ -395,6 +658,14 @@ width: 100%;
 
 @media only screen and (max-width: 302px) {
     #header {
+        .logo {
+            img {
+                display: none;
+            }
+        }
+    }
+
+    #header-account {
         .logo {
             img {
                 display: none;
