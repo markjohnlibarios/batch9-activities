@@ -101,12 +101,15 @@ document.querySelector('#submit').addEventListener('click', function() {
     var password = $('#password').val();
     var counter = 0;
     var account_id = 0;
+    var current_username = "";
 
     if (isValid){
         for (var key in objRet.account) {
             if (objRet.account[key].username == username && objRet.account[key].password == password){
                 counter++;
                 account_id = objRet.account[key].id;
+                current_username = objRet.account[key].username;
+                
             }
         }
 
@@ -117,6 +120,7 @@ document.querySelector('#submit').addEventListener('click', function() {
             var spinner = document.getElementById("spinner");
             spinner.classList.add("show");
             localStorage.setItem('KBP_login', account_id);
+            localStorage.setItem('KBP_username', current_username);
             setTimeout(
                 function() {
                     window.location.href = 'account.html';

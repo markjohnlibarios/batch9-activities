@@ -1,29 +1,20 @@
-/**check if session alive**/
-if (localStorage.getItem('KBP_login') === null) {
-    window.location.href = 'login.html';
-} /*else {
-    window.location.href = 'account.html';
-}*/
+/**toggle menu event**/
+var navItems = document.getElementById("nav-items");
+navItems.style.maxHeight = "0px";
+
+function menutoggle(){
+    if(navItems.style.maxHeight == "0px"){
+        navItems.style.maxHeight = "200px";
+    } else {
+        navItems.style.maxHeight = "0px";
+    }
+}
 
 /***************************************************** */
 
-/**progress bar**/
-window.onscroll = function() {progressBar()};
-
-function progressBar() {
-    var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    var scrolled = (winScroll / height) * 100;
-    document.getElementById("load-bar").style.width = scrolled + "%";
-
-    const header = document.querySelector("header");
-    const progress = document.querySelector("#account-progress");
-
-    if (scrolled > 10){
-        progress.classList.add("progress-container");
-    } else {
-        progress.classList.remove("progress-container");
-    }
+/**check if session alive**/
+if (localStorage.getItem('KBP_login') === null) {
+    window.location.href = 'login.html';
 }
 
 /***************************************************** */
@@ -36,5 +27,22 @@ document.querySelector('#account').addEventListener('click', function() {
     } else {
         window.location.href = 'account.html';
     }
+
+});
+
+/***************************************************** */
+
+/**get credential**/
+var greeting = document.getElementById("welcome");
+greeting.innerHTML = "Welcome " + localStorage.getItem('KBP_username').toUpperCase() + "!";
+
+/***************************************************** */
+
+/**logout**/
+document.querySelector('#logout').addEventListener('click', function() {
+
+    localStorage.removeItem("KBP_username");
+    localStorage.removeItem("KBP_login");
+    window.location.href = 'login.html';
 
 });

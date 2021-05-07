@@ -557,7 +557,41 @@ nav.stroke ul li a:hover:after, nav.stroke ul li p:hover:after {
   margin: auto;
   padding-left: 25px;
   padding-right: 25px;
-  padding-top: 100px;
+  padding-top: 0;
+  font-size: 14px;
+}
+
+.row-account {
+  display: grid;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 0;
+}
+.row-account .col-2 {
+  min-width: 300px;
+}
+.row-account .col-2 img {
+  display: block;
+  width: 50% !important;
+  max-width: 500px;
+  height: auto;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s;
+}
+.row-account .col-2 img:hover {
+  transform: translateY(-5px);
+}
+.row-account .col-2 p {
+  font-size: 14px;
+}
+
+.description {
+  text-align: center;
+  font-size: 15px;
+  color: #333;
+  font-weight: bold;
 }
 
 #account-progress {
@@ -567,6 +601,67 @@ nav.stroke ul li a:hover:after, nav.stroke ul li p:hover:after {
   background: transparent;
   margin-top: 70px;
   z-index: 1;
+}
+
+.account-img {
+  width: 100%;
+}
+
+.account {
+  margin-top: 80px;
+}
+
+.account .col-2 {
+  padding: 20px;
+}
+
+.account .col-2 img {
+  padding: 0;
+}
+
+.account h4 {
+  margin: 20px 0;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.account select {
+  display: block;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.account input {
+  width: 50px;
+  height: 40px;
+  padding-left: 10px;
+  font-size: 20px;
+  margin-right: 10px;
+  border: 1px solid #ff523b;
+}
+
+.account input:focus {
+  outline: none;
+}
+
+.account .fa {
+  color: #ff523b;
+  margin-left: 10px;
+}
+
+.small-img-row {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 5px;
+}
+
+.small-img-row .small-img-col {
+  flex-basis: 24%;
+  cursor: pointer;
+}
+
+.small-img-row .small-img-col img {
+  width: 100%;
 }
 
 /* Animations to fade the snackbar in and out */
