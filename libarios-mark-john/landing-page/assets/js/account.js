@@ -40,9 +40,57 @@ greeting.innerHTML = "Welcome " + localStorage.getItem('KBP_username').toUpperCa
 
 /**logout**/
 document.querySelector('#logout').addEventListener('click', function() {
+    let confirmation = confirm("Are you sure to logout?");
 
-    localStorage.removeItem("KBP_username");
-    localStorage.removeItem("KBP_login");
-    window.location.href = 'login.html';
+    if (confirmation) {
+        localStorage.removeItem("KBP_username");
+        localStorage.removeItem("KBP_login");
+        window.location.href = 'login.html';
+    }
+
+});
+
+
+/***************************************************** */
+
+/**account img**/
+
+var savings = document.getElementById("savings-tbl");
+var onlineShop = document.getElementById("online-shop-tbl");
+var cards = document.getElementById("cards-tbl");
+var savingDescription = document.getElementById("saving-description");
+var onlineDescription = document.getElementById("online-description");
+var cardDescription = document.getElementById("card-description");
+
+document.querySelector('#saving-img').addEventListener('click', function() {
+
+    savings.style.display = 'block';
+    onlineShop.style.display = 'none';
+    cards.style.display = 'none';
+    savingDescription.style.color = '#28a745';
+    onlineDescription.style.color = '#000';
+    cardDescription.style.color = '#000';
+
+});
+
+document.querySelector('#online-img').addEventListener('click', function() {
+
+    savings.style.display = 'none';
+    onlineShop.style.display = 'block';
+    cards.style.display = 'none';
+    savingDescription.style.color = '#000';
+    onlineDescription.style.color = '#28a745';
+    cardDescription.style.color = '#000';
+
+});
+
+document.querySelector('#cards-img').addEventListener('click', function() {
+
+    savings.style.display = 'none';
+    onlineShop.style.display = 'none';
+    cards.style.display = 'block';
+    savingDescription.style.color = '#000';
+    onlineDescription.style.color = '#000';
+    cardDescription.style.color = '#28a745';
 
 });

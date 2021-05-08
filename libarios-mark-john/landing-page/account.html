@@ -24,8 +24,8 @@
         <nav id="nav-bar" class="stroke">
             <ul id="nav-items">
                 <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="#" class="nav-link">About</a></li>
-                <li><a href="#" class="nav-link">Contact</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#videos" class="nav-link">Videos</a></li>
             </ul>
         </nav>
         <p id="account" class="nav-link">
@@ -40,14 +40,16 @@
                 <div class="col-2">
                     <div class="small-img-row">
                         <div class="small-img-col">
-                            <img src="assets/img/savings.png" class="small-img">
-                            <p class="description">Savings</p>
+                            <img src="assets/img/services-saving.png" class="small-img" id="saving-img">
+                            <p class="description" id="saving-description">Savings</p>
                         </div>
                         <div class="small-img-col">
-                            <img src="assets/img/1.png" class="small-img">
+                            <img src="assets/img/services-online-shop.png" class="small-img" id="online-img">
+                            <p class="description" id="online-description">Online Shopings</p>
                         </div>
                         <div class="small-img-col">
-                            <img src="assets/img/1.png" class="small-img">
+                            <img src="assets/img/services-cards.png" class="small-img" id="cards-img">
+                            <p class="description" id="card-description">Cards</p>
                         </div>
                         <div class="small-img-col">
                             <img src="assets/img/logout.png" class="small-img" id="logout">
@@ -58,21 +60,131 @@
                 <hr>
                 <div class="col-2">
                     <h1 id="welcome">Welcome Mark!</h1>
-                    <h4>$50.00</h4>
-                    <select name="" id="">
-                        <option value="">Select Size</option>
-                        <option value="">XXL</option>
-                        <option value="">XL</option>
-                        <option value="">Large</option>
-                        <option value="">Medium</option>
-                        <option value="">Small</option>
-                    </select>
-                    <input type="number" value="1">
-                    <a href="" class="btn">Add To Cart</a>
-                    
-                    <h3>Product Details <i class="fa fa-indent"></i></h3>
-                    <br>
-                    <p>Give your summber wardrobe a style upgrade with the HRX Men's Active T-shirt. Team it with a pair of shorts for your morning workout or a denims for an evening out with the guys.</p>
+                    <div id="savings-tbl" class="savings-tbl">
+                        <table id="savings-summary">
+                            <tr>
+                                <th colspan="4" class="account-no"> Saving Account no.: 05221993</th>
+                            </tr>
+                            <tr>
+                                <th>Date</th>
+                                <th>Particulars</th>
+                                <th>Debit</th>
+                                <th>Credit</th>
+                            </tr>
+                            <tr class="account-content">
+                                <td>Apr 1</td>
+                                <td>Transfer from branch</td>
+                                <td>&nbsp;</td>
+                                <td>&#8369; 2,000.00</td>
+                            </tr>
+                            <tr class="account-content">
+                                <td>Apr 3</td>
+                                <td>Cheque book</td>
+                                <td>&#8369; 650.00</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr class="account-content">
+                                <td>Apr 8</td>
+                                <td>Transfer from branch</td>
+                                <td>&nbsp;</td>
+                                <td>&#8369; 2,000.00</td>
+                            </tr>
+                            <tr class="account-content">
+                                <td>Apr 12</td>
+                                <td>Cheque book</td>
+                                <td>&#8369; 1,650.00</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr class="account-content">
+                                <td>Apr 12</td>
+                                <td>Cheque book</td>
+                                <td>&#8369; 564.00</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr class="account-content">
+                                <td>Apr 12</td>
+                                <td>Cheque book</td>
+                                <td>&#8369; 830.00</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr class="account-content">
+                                <td>Apr 12</td>
+                                <td>Cheque book</td>
+                                <td>&#8369; 6,650.00</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr class="account-content">
+                                <td colspan="2" class="total">Total:</td>
+                                <td class="total-amount">&#8369; 10,344.00</td>
+                                <td class="total-amount">&#8369; 4,000.00</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div id="online-shop-tbl" class="online-shop-tbl">
+                        <table id="online-shop-savings-summary">
+                            <tr>
+                                <th colspan="3" class="account-no"> Online Shop Account no.: 05221993</th>
+                            </tr>
+                            <tr>
+                                <th>Date</th>
+                                <th>Store</th>
+                                <th>Amount</th>
+                            </tr>
+                            <tr class="account-content">
+                                <td>Apr 1</td>
+                                <td>SM Department</td>
+                                <td>&#8369; 2,000.00</td>
+                            </tr>
+                            <tr class="account-content">
+                                <td>Apr 3</td>
+                                <td>Robinsons</td>
+                                <td>&#8369; 650.00</td>
+                            </tr>
+                            <tr class="account-content">
+                                <td>Apr 12</td>
+                                <td>Robinsons</td>
+                                <td>&#8369; 6,650.00</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr class="account-content">
+                                <td colspan="2" class="total">Total:</td>
+                                <td class="total-amount">&#8369; 9,300.00</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div id="cards-tbl" class="cards-tbl">
+                        <table id="cards-summary">
+                            <tr>
+                                <th colspan="3" class="account-no"> Card Account no.: 05221993</th>
+                            </tr>
+                            <tr>
+                                <th>Date</th>
+                                <th>Particulars</th>
+                                <th>Credit</th>
+                            </tr>
+                            <tr class="account-content">
+                                <td>Apr 1</td>
+                                <td>Transfer</td>
+                                <td>&#8369; 2,000.00</td>
+                            </tr>
+                            <tr class="account-content">
+                                <td>Apr 3</td>
+                                <td>Payment</td>
+                                <td>&#8369; 1,650.00</td>
+                            </tr>
+                            <tr class="account-content">
+                                <td>Apr 8</td>
+                                <td>SM Department</td>
+                                <td>&#8369; 8,146.00</td>
+                            </tr>
+                            <tr class="account-content">
+                                <td colspan="2" class="total">Total:</td>
+                                <td class="total-amount">&#8369; 11,796.00</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
