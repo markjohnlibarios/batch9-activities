@@ -3,6 +3,8 @@ const upButton = document.querySelector('#up')
 const buyListDisplay = document.querySelector('#first-list')
 const fridgeListDisplay = document.querySelector('#second-list')
 
+const buyListSpan = document.querySelectorAll('.buy-list');
+
 const buyList = ['chicharon', 'buko pie', 'mango', 'bacon' ]
 const fridge = []
 
@@ -18,6 +20,12 @@ const fridge = []
 
 function moveUp(){
     //your code
+    if (fridge.length != 0){
+        var counterFridgeList = fridge.length - 1;
+        buyList.push(fridge[counterFridgeList]);
+        fridge.pop();
+        display();
+    }
 }
 
 upButton.addEventListener('click', moveUp)
@@ -27,9 +35,47 @@ upButton.addEventListener('click', moveUp)
 
 function moveDown(){
     //your code
+    if (buyList.length != 0){
+        var counterBuyList = buyList.length - 1;
+        fridge.push(buyList[counterBuyList]);
+        buyList.pop();
+        display();
+    }
 }
 
 downButton.addEventListener('click', moveDown)
 
-buyListDisplay.innerHTML = buyList
-fridgeListDisplay.innerHTML = fridge
+function display(){
+    buyListDisplay.innerHTML = buyList;
+    fridgeListDisplay.innerHTML = fridge;
+}
+
+display();
+
+
+// TODO: dynamic result
+// function fillBuyList(){
+//     counter = buyList.length - 1;
+
+//     for(let i = 0; i < buyList.length; i++){
+//         var spanElement = document.createElement("SPAN");
+//         spanElement.setAttribute("id", i);
+//         spanElement.setAttribute("class", 'buy-list');
+//         spanElement.setAttribute("onclick", 'alertMe(this.id)');
+//         if (counter != i){
+//             spanElement.textContent  = buyList[i] + ', ';
+//         } else {
+//             spanElement.textContent  = buyList[i];
+//         }
+//         buyListDisplay.appendChild(spanElement); 
+//     }
+
+// }
+
+// function alertMe(id){
+//     alert(id);
+// }
+
+// //buyListSpan.addEventListener('click', alertMe);
+
+// fillBuyList();
