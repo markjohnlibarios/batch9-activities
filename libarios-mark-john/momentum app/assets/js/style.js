@@ -277,8 +277,12 @@ todo.addEventListener('click', function() {
 newTodo.addEventListener('keyup', function(e) {
     if (e.key === 'Enter' || e.keyCode === 13) {
         if (!newTodo.value == ''){
-            var lastTodoItem = objTodo.todo.length -1;
-            var newTodoId = objTodo.todo[lastTodoItem].id + 1;
+            if (objTodo.todo.length > 0) {
+                var lastTodoItem = objTodo.todo.length -1;
+                var newTodoId = objTodo.todo[lastTodoItem].id + 1;
+            } else {
+                var newTodoId = 1;
+            }
             var myNewTodo = {
                 "id": newTodoId,
                 "todoTask": newTodo.value
@@ -357,12 +361,16 @@ function todoListTask() {
 //randomize quote
 
 function displayRandomQuote() {
-    var keys = Object.keys(objQuotes.quotes);
-    var randomKey = keys[Math.floor(Math.random()*keys.length)];
-    var randomValue = objQuotes.quotes[randomKey];
+    if (objQuotes.quotes.length > 0) {
+        var keys = Object.keys(objQuotes.quotes);
+        var randomKey = keys[Math.floor(Math.random()*keys.length)];
+        var randomValue = objQuotes.quotes[randomKey];
 
-    quoteView.innerHTML = randomValue.quote;
-    authorView.innerHTML = '— ' + randomValue.author;
+        quoteView.innerHTML = randomValue.quote;
+        authorView.innerHTML = '— ' + randomValue.author;
+    } else {
+        return false;
+    }
 }
 
 //------------------------------------------------------
@@ -398,8 +406,12 @@ newQuoteAuthor.addEventListener('keyup', function(e) {
 });
 
 function newQuote(quote, author) {
-    var lastQuoteItem = objQuotes.quotes.length -1;
-    var newQuoteId = objQuotes.quotes[lastQuoteItem].id + 1;
+    if (objQuotes.quotes.length > 0) {
+        var lastQuoteItem = objQuotes.quotes.length -1;
+        var newQuoteId = objQuotes.quotes[lastQuoteItem].id + 1;
+    } else {
+        var newQuoteId = 1;
+    }
     var myNewQuote = {
         "id": newQuoteId,
         "quote": quote,
