@@ -1,0 +1,684 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.main {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.top-content {
+  display: none;
+  justify-content: space-between;
+  padding: 25px;
+  color: white;
+  transition: transform 0.2s ease;
+  -webkit-animation: fadeIn 3s;
+  -moz-animation: fadeIn 3s;
+  -o-animation: fadeIn 3s;
+  -ms-animation: fadeIn 3s;
+}
+.top-content .right {
+  display: flex;
+}
+
+.middle-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quotes {
+  display: none;
+  margin-top: 3%;
+  color: #fff;
+  width: 30%;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  -webkit-animation: fadeIn 3s;
+  -moz-animation: fadeIn 3s;
+  -o-animation: fadeIn 3s;
+  -ms-animation: fadeIn 3s;
+}
+.quotes .quote {
+  text-align: justify;
+}
+.quotes .author {
+  float: right;
+  font-size: 13px;
+  font-style: italic;
+}
+.quotes:hover {
+  text-shadow: 1px 1px 2px black, 0 0 25px #4bc546, 0 0 5px deepskyblue;
+}
+
+.middle-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.middle-container .item {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  -webkit-animation: fadeIn 3s;
+  -moz-animation: fadeIn 3s;
+  -o-animation: fadeIn 3s;
+  -ms-animation: fadeIn 3s;
+}
+.middle-container .item img {
+  width: 100px;
+  opacity: 0.6;
+  transition: 0.5s;
+}
+.middle-container .item .circle {
+  content: "";
+  width: 100px;
+  height: 100px;
+  border: 8px solid deepskyblue;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: pulseEffect infinite 1s;
+  transition: 0.5s;
+}
+.middle-container .item:hover img {
+  opacity: 1;
+}
+.middle-container .request-name {
+  display: none;
+  width: 100%;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 3s;
+  -webkit-animation: fadeIn 3s;
+  -moz-animation: fadeIn 3s;
+  -o-animation: fadeIn 3s;
+  -ms-animation: fadeIn 3s;
+}
+.middle-container .request-name input {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background: transparent;
+}
+.middle-container .request-name input:focus + .label-name .content-name, .middle-container .request-name input:valid + .label-name .content-name {
+  transform: translateY(-120%);
+  font-size: 14px;
+  color: #5fa8d3;
+}
+.middle-container .request-name input:focus + .label-name::after, .middle-container .request-name input:valid + .label-name::after {
+  transform: translateX(0%);
+}
+.middle-container .request-name label {
+  position: absolute;
+  bottom: 0px;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+}
+.middle-container .request-name label::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: -1px;
+  width: 100%;
+  height: 100%;
+  border-bottom: 3px solid #5fa8d3;
+  transform: translateX(-100%);
+  transition: transform 0.2s ease;
+}
+.middle-container .request-name label .content-name {
+  position: absolute;
+  bottom: 5px;
+  left: 0px;
+  transition: all 0.3s ease;
+}
+.middle-container .user-content {
+  display: none;
+  text-align: center;
+  color: white;
+  transition: transform 0.2s ease;
+  -webkit-animation: fadeIn 3s;
+  -moz-animation: fadeIn 3s;
+  -o-animation: fadeIn 3s;
+  -ms-animation: fadeIn 3s;
+}
+.middle-container .user-content .timer {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+.middle-container .user-content .timer:hover {
+  text-shadow: 1px 1px 2px black, 0 0 25px #4bc546, 0 0 5px deepskyblue;
+}
+.middle-container .user-content .timer .hour-minute {
+  font-size: 100px;
+  font-weight: 100;
+  padding: 20px;
+  width: 100%;
+}
+.middle-container .user-content .timer .seconds {
+  font-size: 30px;
+  font-weight: 100;
+  margin-top: 97px;
+  width: 55px;
+  margin-left: -30px;
+}
+.middle-container .user-content .timer .ampm {
+  display: none;
+  font-size: 30px;
+  font-weight: 100;
+  margin-top: 97px;
+  width: 55px;
+}
+.middle-container .user-content #greetings {
+  font-size: 20px;
+  font-weight: 100;
+}
+
+.hidden {
+  display: none;
+}
+
+.flex {
+  display: flex;
+}
+
+.block {
+  display: block !important;
+}
+
+footer {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 15px;
+  background-color: transparent;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 8;
+  transition: transform 0.2s ease;
+  -webkit-animation: fadeIn 3s;
+  -moz-animation: fadeIn 3s;
+  -o-animation: fadeIn 3s;
+  -ms-animation: fadeIn 3s;
+}
+footer #current-day {
+  color: #fff;
+  font-size: 19px;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+footer #current-day:hover {
+  text-shadow: 1px 1px 2px black, 0 0 25px #4bc546, 0 0 5px deepskyblue;
+}
+footer .todo {
+  color: #fff;
+  font-size: 19px;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+footer .todo:hover {
+  text-shadow: 1px 1px 2px black, 0 0 25px #4bc546, 0 0 5px deepskyblue;
+}
+
+.quote-header {
+  color: #fff;
+  font-size: 19px;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+.quote-header:hover {
+  text-shadow: 1px 1px 2px black, 0 0 25px #4bc546, 0 0 5px deepskyblue;
+}
+
+#weather {
+  padding-right: 15px;
+  cursor: pointer;
+}
+#weather:hover {
+  text-shadow: 1px 1px 2px black, 0 0 25px #4bc546, 0 0 5px deepskyblue;
+}
+
+.weather {
+  font-size: 35px;
+}
+
+.weather-description, .degree {
+  font-size: 13px;
+  font-style: normal;
+}
+
+.new-quote {
+  width: 100%;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+  margin-top: -10px;
+  animation: fadeIn 3s;
+  -webkit-animation: fadeIn 3s;
+  -moz-animation: fadeIn 3s;
+  -o-animation: fadeIn 3s;
+  -ms-animation: fadeIn 3s;
+}
+.new-quote input {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background: transparent;
+}
+.new-quote input:focus + .label-name .content-name, .new-quote input:valid + .label-name .content-name {
+  transform: translateY(-120%);
+  font-size: 14px;
+  color: #5fa8d3;
+}
+.new-quote input:focus + .label-name::after, .new-quote input:valid + .label-name::after {
+  transform: translateX(0%);
+}
+.new-quote label {
+  position: absolute;
+  bottom: 0px;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+}
+.new-quote label::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: -1px;
+  width: 100%;
+  height: 100%;
+  border-bottom: 3px solid #5fa8d3;
+  transform: translateX(-100%);
+  transition: transform 0.2s ease;
+}
+.new-quote label .content-name {
+  position: absolute;
+  bottom: 5px;
+  left: 0px;
+  transition: all 0.3s ease;
+}
+
+.new-quote-author {
+  width: 100%;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  animation: fadeIn 3s;
+  -webkit-animation: fadeIn 3s;
+  -moz-animation: fadeIn 3s;
+  -o-animation: fadeIn 3s;
+  -ms-animation: fadeIn 3s;
+}
+.new-quote-author input {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background: transparent;
+}
+.new-quote-author input:focus + .label-name .content-name, .new-quote-author input:valid + .label-name .content-name {
+  transform: translateY(-120%);
+  font-size: 14px;
+  color: #5fa8d3;
+}
+.new-quote-author input:focus + .label-name::after, .new-quote-author input:valid + .label-name::after {
+  transform: translateX(0%);
+}
+.new-quote-author label {
+  position: absolute;
+  bottom: 0px;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+}
+.new-quote-author label::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: -1px;
+  width: 100%;
+  height: 100%;
+  border-bottom: 3px solid #5fa8d3;
+  transform: translateX(-100%);
+  transition: transform 0.2s ease;
+}
+.new-quote-author label .content-name {
+  position: absolute;
+  bottom: 5px;
+  left: 0px;
+  transition: all 0.3s ease;
+}
+
+.quote-list {
+  display: none;
+  color: white;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  margin-top: 60px;
+  margin-right: 20px;
+  background: transparent;
+  height: 50%;
+  width: 23%;
+  font-size: 14px;
+  border: 1px solid green;
+}
+
+.quote-list-view {
+  display: block;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 10px;
+  margin-bottom: 0px;
+  margin-right: 20px;
+  background: transparent;
+  height: 70%;
+  width: 95%;
+  font-size: 14px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.quote-list-view::-webkit-scrollbar {
+  width: 10px;
+}
+.quote-list-view::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px #57a1cc;
+  border-radius: 10px;
+}
+.quote-list-view::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px #57a1cc;
+}
+.quote-list-view .fa-trash-alt {
+  cursor: pointer;
+  height: 16px;
+  width: 16px;
+  vertical-align: middle;
+}
+.quote-list-view .fa-trash-alt:hover {
+  color: #57a1cc;
+}
+.quote-list-view .quote-wrapper {
+  height: auto;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.quote-list-view .quote-title {
+  height: auto;
+  width: 87%;
+  background: 0;
+  border: 0;
+  outline-style: none;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.new-todo {
+  width: 100%;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 3s;
+  -webkit-animation: fadeIn 3s;
+  -moz-animation: fadeIn 3s;
+  -o-animation: fadeIn 3s;
+  -ms-animation: fadeIn 3s;
+}
+.new-todo input {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background: transparent;
+}
+.new-todo input:focus + .label-name .content-name, .new-todo input:valid + .label-name .content-name {
+  transform: translateY(-120%);
+  font-size: 14px;
+  color: #5fa8d3;
+}
+.new-todo input:focus + .label-name::after, .new-todo input:valid + .label-name::after {
+  transform: translateX(0%);
+}
+.new-todo label {
+  position: absolute;
+  bottom: 0px;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+}
+.new-todo label::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: -1px;
+  width: 100%;
+  height: 100%;
+  border-bottom: 3px solid #5fa8d3;
+  transform: translateX(-100%);
+  transition: transform 0.2s ease;
+}
+.new-todo label .content-name {
+  position: absolute;
+  bottom: 5px;
+  left: 0px;
+  transition: all 0.3s ease;
+}
+
+.todo-list {
+  display: none;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 10px;
+  margin-bottom: 40px;
+  margin-right: 20px;
+  background: transparent;
+  height: 50%;
+  width: 23%;
+  font-size: 14px;
+}
+
+.todo-list-view {
+  display: block;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 10px;
+  margin-bottom: 0px;
+  margin-right: 20px;
+  background: transparent;
+  height: 83%;
+  width: 95%;
+  font-size: 14px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.todo-list-view::-webkit-scrollbar {
+  width: 10px;
+}
+.todo-list-view::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px #57a1cc;
+  border-radius: 10px;
+}
+.todo-list-view::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px #57a1cc;
+}
+.todo-list-view .fa-trash-alt {
+  cursor: pointer;
+  height: 16px;
+  width: 16px;
+  vertical-align: middle;
+}
+.todo-list-view .fa-trash-alt:hover {
+  color: #57a1cc;
+}
+.todo-list-view .task-wrapper {
+  height: auto;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.todo-list-view .task-title {
+  height: auto;
+  width: 87%;
+  background: 0;
+  border: 0;
+  outline-style: none;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.button-confirm {
+  float: right;
+  display: none;
+  transition: transform 0.2s ease;
+  -webkit-animation: fadeIn 1s;
+  -moz-animation: fadeIn 1s;
+  -o-animation: fadeIn 1s;
+  -ms-animation: fadeIn 1s;
+}
+
+.btn-delete {
+  background-color: none;
+  border: none;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 1px solid #4b8eb4;
+  margin-right: 5px;
+}
+.btn-delete:hover {
+  background-color: #57a1cc;
+}
+
+.slide-in {
+  display: block;
+  border: 0;
+  border-radius: 0.1em;
+  animation: slideMe 0.7s ease-in;
+}
+
+@-webkit-keyframes pulseEffect {
+  0% {
+    -webkit-transform: scale(1, 1);
+    opacity: 0.6;
+  }
+  100% {
+    -webkit-transform: scale(1.2, 1.2);
+    opacity: 0;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes slideMe {
+  0% {
+    transform: skewX(25deg) translateX(-500px);
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(0px);
+  }
+  62% {
+    transform: skewX(0deg) translateX(10px);
+  }
+  70% {
+    transform: skew(-2deg);
+    opacity: 1;
+  }
+  80% {
+    transform: skew(0deg) translate(0);
+  }
+  90% {
+    transform: skew(-5deg);
+  }
+  100% {
+    transform: skew(0deg);
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="assets/img/fav.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="assets/fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script type="text/javascript" src="assets/js/style.js" defer></script>
+
+    <title>Momentum App</title>
+</head>
+<body>
+    <div class="main">
+        <div id="top-content" class="top-content">
+            <div class="right">
+                <div id="weather"></div>
+                
+            </div>
+            <div>
+                <p id="quote-header" class="quote-header">Quotes</p>
+            </div>
+        </div>
+
+        <div class="middle-content">
+            <div class="middle-container">
+                <div class="item" id="logo-main">
+                    <img src="assets/img/logo.png" />
+                    <div class="circle"></div>
+                </div>
+
+                <div id="request-name" class="request-name">
+                    <input type="text" id="users-name" name="users-name" required autocomplete="off">
+                    <label for="users-name" class="label-name">
+                        <span class="content-name">Name</span>
+                    </label>
+                </div>
+                
+                <div id="user-content" class="user-content">
+                        <div id="timer" class="timer" title="Change Time Format">
+                            <div id="clock" class="hour-minute"></div>
+                            <div id="seconds" class="seconds"></div>
+                            <div id="ampm" class="ampm">AM</div>
+                        </div>
+                    <p id="greetings">Welcome Top!</p>
+                </div>
+            </div>
+
+            <div id="quotes" class="quotes">
+                <p class="quote"></p>
+                <p class="author"></p>
+            </div>
+        </div>
+
+        <div id="quote-list" class="quote-list">
+            <div id="new-quote" class="new-quote">
+                <input type="text" id="new-quotes" name="new-quotes" required autocomplete="off">
+                <label for="new-quotes" class="label-name">
+                    <span class="content-name">New Quote</span>
+                </label>
+            </div>
+            <div id="new-quote-author" class="new-quote-author">
+                <input type="text" id="new-quotes-author" name="new-quotes-author" required autocomplete="off">
+                <label for="new-quotes-author" class="label-name">
+                    <span class="content-name">Author</span>
+                </label>
+            </div>
+            <div id="quote-view" class="quote-list-view"></div>
+        </div>
+
+        <div id="todo-list" class="todo-list">
+            <div id="new-todo" class="new-todo">
+                <input type="text" id="new-todos" name="new-todos" required autocomplete="off">
+                <label for="new-todos" class="label-name">
+                    <span class="content-name">New Todo</span>
+                </label>
+            </div>
+            <div id="todo-view" class="todo-list-view"></div>
+        </div>
+
+        <footer>
+            <p id="current-day"></p>
+            <p id="todo" class="todo">TODO List</p>
+        </footer>
+    
+    </div>
+</body>
+</html>
