@@ -16,19 +16,12 @@
     <div class="main">
         <div id="top-content" class="top-content">
             <div class="right">
-                <div><i class="fas fa-cloud-sun" style="font-size: 35px"></i></div>
-                <!--
-                    <i class="fas fa-smog"></i>
-                    <i class="fas fa-cloud-sun"></i>
-                    <i class="fas fa-cloud-rain"></i>
-                    <i class="fas fa-wind"></i>
-                    <i class="fas fa-bolt"></i>
-                    <i class="fas fa-cloud"></i>
-                    <i class="fas fa-cloud-showers-heavy"></i>
-                -->
+                <div id="weather"></div>
                 
             </div>
-            <div><h1>test</h1></div>
+            <div>
+                <p id="quote-header" class="quote-header">Quotes</p>
+            </div>
         </div>
 
         <div class="middle-content">
@@ -54,7 +47,27 @@
                     <p id="greetings">Welcome Top!</p>
                 </div>
             </div>
-            <p id="quotes" class="quotes">Yesterday was a history. Tomorrow will be a mystery. Today is a gift, that's why it's called present.</p>
+
+            <div id="quotes" class="quotes">
+                <p class="quote"></p>
+                <p class="author"></p>
+            </div>
+        </div>
+
+        <div id="quote-list" class="quote-list">
+            <div id="new-quote" class="new-quote">
+                <input type="text" id="new-quotes" name="new-quotes" required autocomplete="off">
+                <label for="new-quotes" class="label-name">
+                    <span class="content-name">New Quote</span>
+                </label>
+            </div>
+            <div id="new-quote-author" class="new-quote-author">
+                <input type="text" id="new-quotes-author" name="new-quotes-author" required autocomplete="off">
+                <label for="new-quotes-author" class="label-name">
+                    <span class="content-name">Author</span>
+                </label>
+            </div>
+            <div id="quote-view" class="quote-list-view"></div>
         </div>
 
         <div id="todo-list" class="todo-list">
@@ -64,8 +77,7 @@
                     <span class="content-name">New Todo</span>
                 </label>
             </div>
-            <div id="todo-view" class="todo-list-view">
-            </div>
+            <div id="todo-view" class="todo-list-view"></div>
         </div>
 
         <footer>

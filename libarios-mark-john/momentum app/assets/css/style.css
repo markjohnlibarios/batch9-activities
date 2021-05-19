@@ -36,10 +36,29 @@ body {
   justify-content: center;
   align-items: center;
 }
-.middle-content .quotes {
+
+.quotes {
   display: none;
   margin-top: 3%;
   color: #fff;
+  width: 30%;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  -webkit-animation: fadeIn 3s;
+  -moz-animation: fadeIn 3s;
+  -o-animation: fadeIn 3s;
+  -ms-animation: fadeIn 3s;
+}
+.quotes .quote {
+  text-align: justify;
+}
+.quotes .author {
+  float: right;
+  font-size: 13px;
+  font-style: italic;
+}
+.quotes:hover {
+  text-shadow: 1px 1px 2px black, 0 0 25px #4bc546, 0 0 5px deepskyblue;
 }
 
 .middle-container {
@@ -147,6 +166,9 @@ body {
   justify-content: center;
   cursor: pointer;
 }
+.middle-container .user-content .timer:hover {
+  text-shadow: 1px 1px 2px black, 0 0 25px #4bc546, 0 0 5px deepskyblue;
+}
 .middle-container .user-content .timer .hour-minute {
   font-size: 100px;
   font-weight: 100;
@@ -207,11 +229,226 @@ footer #current-day {
   letter-spacing: 2px;
   cursor: pointer;
 }
+footer #current-day:hover {
+  text-shadow: 1px 1px 2px black, 0 0 25px #4bc546, 0 0 5px deepskyblue;
+}
 footer .todo {
   color: #fff;
   font-size: 19px;
   letter-spacing: 2px;
   cursor: pointer;
+}
+footer .todo:hover {
+  text-shadow: 1px 1px 2px black, 0 0 25px #4bc546, 0 0 5px deepskyblue;
+}
+
+.quote-header {
+  color: #fff;
+  font-size: 19px;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+.quote-header:hover {
+  text-shadow: 1px 1px 2px black, 0 0 25px #4bc546, 0 0 5px deepskyblue;
+}
+
+#weather {
+  padding-right: 15px;
+  cursor: pointer;
+}
+#weather:hover {
+  text-shadow: 1px 1px 2px black, 0 0 25px #4bc546, 0 0 5px deepskyblue;
+}
+
+.weather {
+  font-size: 35px;
+}
+
+.weather-description, .degree {
+  font-size: 13px;
+  font-style: normal;
+}
+
+.new-quote {
+  width: 100%;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+  margin-top: -10px;
+  animation: fadeIn 3s;
+  -webkit-animation: fadeIn 3s;
+  -moz-animation: fadeIn 3s;
+  -o-animation: fadeIn 3s;
+  -ms-animation: fadeIn 3s;
+}
+.new-quote input {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background: transparent;
+}
+.new-quote input:focus + .label-name .content-name, .new-quote input:valid + .label-name .content-name {
+  transform: translateY(-120%);
+  font-size: 14px;
+  color: #5fa8d3;
+}
+.new-quote input:focus + .label-name::after, .new-quote input:valid + .label-name::after {
+  transform: translateX(0%);
+}
+.new-quote label {
+  position: absolute;
+  bottom: 0px;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+}
+.new-quote label::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: -1px;
+  width: 100%;
+  height: 100%;
+  border-bottom: 3px solid #5fa8d3;
+  transform: translateX(-100%);
+  transition: transform 0.2s ease;
+}
+.new-quote label .content-name {
+  position: absolute;
+  bottom: 5px;
+  left: 0px;
+  transition: all 0.3s ease;
+}
+
+.new-quote-author {
+  width: 100%;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  animation: fadeIn 3s;
+  -webkit-animation: fadeIn 3s;
+  -moz-animation: fadeIn 3s;
+  -o-animation: fadeIn 3s;
+  -ms-animation: fadeIn 3s;
+}
+.new-quote-author input {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background: transparent;
+}
+.new-quote-author input:focus + .label-name .content-name, .new-quote-author input:valid + .label-name .content-name {
+  transform: translateY(-120%);
+  font-size: 14px;
+  color: #5fa8d3;
+}
+.new-quote-author input:focus + .label-name::after, .new-quote-author input:valid + .label-name::after {
+  transform: translateX(0%);
+}
+.new-quote-author label {
+  position: absolute;
+  bottom: 0px;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+}
+.new-quote-author label::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: -1px;
+  width: 100%;
+  height: 100%;
+  border-bottom: 3px solid #5fa8d3;
+  transform: translateX(-100%);
+  transition: transform 0.2s ease;
+}
+.new-quote-author label .content-name {
+  position: absolute;
+  bottom: 5px;
+  left: 0px;
+  transition: all 0.3s ease;
+}
+
+.quote-list {
+  display: none;
+  color: white;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  margin-top: 60px;
+  margin-right: 20px;
+  background: transparent;
+  height: 50%;
+  width: 23%;
+  font-size: 14px;
+  border: 1px solid green;
+}
+
+.quote-list-view {
+  display: block;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 10px;
+  margin-bottom: 0px;
+  margin-right: 20px;
+  background: transparent;
+  height: 70%;
+  width: 95%;
+  font-size: 14px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.quote-list-view::-webkit-scrollbar {
+  width: 10px;
+}
+.quote-list-view::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px #57a1cc;
+  border-radius: 10px;
+}
+.quote-list-view::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px #57a1cc;
+}
+.quote-list-view .fa-trash-alt {
+  cursor: pointer;
+  height: 16px;
+  width: 16px;
+  vertical-align: middle;
+}
+.quote-list-view .fa-trash-alt:hover {
+  color: #57a1cc;
+}
+.quote-list-view .quote-wrapper {
+  height: auto;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.quote-list-view .quote-title {
+  height: auto;
+  width: 87%;
+  background: 0;
+  border: 0;
+  outline-style: none;
+  padding-left: 3px;
+  padding-right: 3px;
 }
 
 .new-todo {
@@ -300,22 +537,6 @@ footer .todo {
   font-size: 14px;
   overflow: hidden;
   overflow-y: auto;
-  /*ul {
-      margin-top: -20px;
-      li {
-          padding-top: 10px;
-          .far {
-              //float: right;
-              padding: 5px;
-          }
-          .fa-trash-alt {
-              cursor: pointer;
-              &:hover {
-                  color: #57a1cc;
-              }
-          }
-      }
-  }*/
 }
 .todo-list-view::-webkit-scrollbar {
   width: 10px;

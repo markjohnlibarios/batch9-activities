@@ -35,10 +35,29 @@ body {
     display: flex;
 	justify-content: center;
     align-items: center;
-    .quotes {
-        display: none;
-        margin-top: 3%;
-        color: #fff;
+}
+
+.quotes {
+    display: none;
+    margin-top: 3%;
+    color: #fff;
+    width: 30%;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    -webkit-animation: fadeIn 3s;
+    -moz-animation: fadeIn 3s;
+    -o-animation: fadeIn 3s;
+    -ms-animation: fadeIn 3s;
+    .quote {
+        text-align: justify;
+    }
+    .author {
+        float: right;
+        font-size: 13px;
+        font-style: italic;
+    }
+    &:hover {
+        text-shadow: 1px 1px 2px black, 0 0 25px rgb(75, 197, 70), 0 0 5px deepskyblue;
     }
 }
 
@@ -147,6 +166,9 @@ body {
             display: flex;
             justify-content: center;
             cursor: pointer;
+            &:hover {
+                text-shadow: 1px 1px 2px black, 0 0 25px rgb(75, 197, 70), 0 0 5px deepskyblue;
+            }
             .hour-minute {
                 font-size: 100px;
                 font-weight: 100;
@@ -208,12 +230,227 @@ footer {
         font-size: 19px;
         letter-spacing: 2px;
         cursor: pointer;
+        &:hover {
+            text-shadow: 1px 1px 2px black, 0 0 25px rgb(75, 197, 70), 0 0 5px deepskyblue;
+        }
     }
     .todo {
         color: #fff;
         font-size: 19px;
         letter-spacing: 2px;
         cursor: pointer;
+        &:hover {
+            text-shadow: 1px 1px 2px black, 0 0 25px rgb(75, 197, 70), 0 0 5px deepskyblue;
+        }
+    }
+}
+
+.quote-header {
+    color: #fff;
+    font-size: 19px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    &:hover {
+        text-shadow: 1px 1px 2px black, 0 0 25px rgb(75, 197, 70), 0 0 5px deepskyblue;
+    }
+}
+
+#weather {
+    padding-right: 15px;
+    cursor: pointer;
+    &:hover {
+        text-shadow: 1px 1px 2px black, 0 0 25px rgb(75, 197, 70), 0 0 5px deepskyblue;
+    }
+}
+
+.weather {
+    font-size: 35px;
+}
+
+.weather-description, .degree {
+    font-size: 13px;
+    font-style: normal;
+}
+
+.new-quote{
+    width: 100%;
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+    margin-top: -10px;
+    animation: fadeIn 3s;
+    -webkit-animation: fadeIn 3s;
+    -moz-animation: fadeIn 3s;
+    -o-animation: fadeIn 3s;
+    -ms-animation: fadeIn 3s;
+    input {
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        background: transparent;
+        &:focus + .label-name .content-name, &:valid + .label-name .content-name {
+            transform: translateY(-120%);
+            font-size: 14px;
+            color: #5fa8d3;
+        }
+        &:focus + .label-name::after, &:valid + .label-name::after {
+            transform: translateX(0%);
+        }
+    }
+    label {
+        position: absolute;
+        bottom: 0px;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        border-bottom: 1px solid #fff;
+        color: #fff;
+        &::after{
+            content: '';
+            position: absolute;
+            left: 0px;
+            bottom: -1px;
+            width: 100%;
+            height: 100%;
+            border-bottom:  3px solid #5fa8d3;
+            transform: translateX(-100%);
+            transition: transform 0.2s ease;
+        }
+        .content-name {
+            position: absolute;
+            bottom: 5px;
+            left: 0px;
+            transition: all 0.3s ease;
+        }
+    }
+}
+
+.new-quote-author{
+    width: 100%;
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    animation: fadeIn 3s;
+    -webkit-animation: fadeIn 3s;
+    -moz-animation: fadeIn 3s;
+    -o-animation: fadeIn 3s;
+    -ms-animation: fadeIn 3s;
+    input {
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        background: transparent;
+        &:focus + .label-name .content-name, &:valid + .label-name .content-name {
+            transform: translateY(-120%);
+            font-size: 14px;
+            color: #5fa8d3;
+        }
+        &:focus + .label-name::after, &:valid + .label-name::after {
+            transform: translateX(0%);
+        }
+    }
+    label {
+        position: absolute;
+        bottom: 0px;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        border-bottom: 1px solid #fff;
+        color: #fff;
+        &::after{
+            content: '';
+            position: absolute;
+            left: 0px;
+            bottom: -1px;
+            width: 100%;
+            height: 100%;
+            border-bottom:  3px solid #5fa8d3;
+            transform: translateX(-100%);
+            transition: transform 0.2s ease;
+        }
+        .content-name {
+            position: absolute;
+            bottom: 5px;
+            left: 0px;
+            transition: all 0.3s ease;
+        }
+    }
+}
+
+.quote-list {
+    display: none;
+    color: white;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    margin-top: 60px;
+    margin-right: 20px;
+    background: transparent;
+    height: 50%;
+    width: 23%;
+    font-size: 14px;
+    border: 1px solid green;
+}
+
+.quote-list-view {
+    display: block;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+    margin-bottom: 0px;
+    margin-right: 20px;
+    background: transparent;
+    height: 70%;
+    width: 95%;
+    font-size: 14px;
+    overflow: hidden;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+    &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px #57a1cc; 
+        border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px #57a1cc; 
+    }
+    .fa-trash-alt {
+        cursor: pointer;
+        height: 16px;
+        width: 16px;
+        vertical-align: middle;
+        &:hover {
+            color: #57a1cc;
+        }
+    }
+    .quote-wrapper {
+        height: auto;
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+    }
+    .quote-title {
+        height: auto;
+        width: 87%;
+        background: 0;
+        border: 0;
+        outline-style: none;
+        padding-left: 3px;
+        padding-right: 3px;
     }
 }
 
@@ -338,22 +575,6 @@ footer {
         padding-left: 3px;
         padding-right: 3px;
     }
-    /*ul {
-        margin-top: -20px;
-        li {
-            padding-top: 10px;
-            .far {
-                //float: right;
-                padding: 5px;
-            }
-            .fa-trash-alt {
-                cursor: pointer;
-                &:hover {
-                    color: #57a1cc;
-                }
-            }
-        }
-    }*/
 }
 
 .button-confirm {
