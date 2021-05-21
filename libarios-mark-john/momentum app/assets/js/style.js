@@ -24,6 +24,12 @@ var randomQuotes = document.querySelector('#quotes');
 var newQuoteTitle = document.querySelector('#new-quotes');
 var newQuoteAuthor = document.querySelector('#new-quotes-author');
 var weather = document.querySelector('#weather');
+var goalLogo = document.querySelector('#goal-logo');
+var closeModal = document.querySelector('#close-overlay');
+var newGoal = document.querySelector('#goal-type');
+var goalView = document.querySelector('#goal-view');
+var currentMainGoal = document.querySelector('#current-goal');
+var goalDiv = document.querySelector('#todays-goal-list');
 
 var name;
 var customizedName;
@@ -133,6 +139,42 @@ var objWeather = {
         ]
 }
 
+var objGoal = {
+    "goal":
+        [
+            {
+                "id": 1,
+                "goal": "Create new page",
+                "status": 1,
+                "dateFinished": "21 May 2021"
+            },
+            {
+                "id": 2,
+                "goal": "Refactor",
+                "status": 0,
+                "dateFinished": 0
+            },
+            {
+                "id": 3,
+                "goal": "Create test data",
+                "status": 0,
+                "dateFinished": 0
+            },
+            {
+                "id": 4,
+                "goal": "Simulate",
+                "status": 1,
+                "dateFinished": "21 May 2021"
+            },
+            {
+                "id": 5,
+                "goal": "Check methods",
+                "status": 1,
+                "dateFinished": "21 May 2021"
+            },
+        ]
+}
+
 localStorage.setItem('timeFormat', 24);
 
 window.addEventListener('click', function(e) {   
@@ -144,6 +186,8 @@ window.addEventListener('click', function(e) {
         quoteList.classList.remove('slide-in');
     }
 }, true);
+
+closeModal.click();
 
 //------------------------------------------------------
 //event: create randomizer for image background display
@@ -200,6 +244,8 @@ userInputName.addEventListener('keyup', function(e) {
             displayRandomQuote();
             quotesList();
             displayRandomWeather();
+            goalList();
+            currentGoal();
         }
     }
 
@@ -315,7 +361,6 @@ function todoDelete(item) {
 
         for (let i = 0; i < objTodo.todo.length; i++) {
             if ( objTodo.todo[i].id == item ) {
-                //index = i;
                 objTodo.todo.splice(i, 1);
                 break;
             }
@@ -332,23 +377,22 @@ function todoListTask() {
     for (var key in objTodo.todo) {
         var taskWrapper = document.createElement('div');
         var taskTitle = document.createElement('span');
-        var taskDeleteYes = document.createElement('label');
-        var taskDeleteNo = document.createElement('label');
+        var taskDeleteYes = document.createElement('i');
+        var taskDeleteNo = document.createElement('i');
         var taskDelete = document.createElement('i');
 
         taskWrapper.setAttribute('class', 'task-wrapper');
         taskTitle.setAttribute('class', 'task-title');
         taskDeleteYes.setAttribute('id', 'yes-todo-' + objTodo.todo[key].id);
-        taskDeleteYes.setAttribute('class', 'button-confirm far btn-delete delete' + objTodo.todo[key].id);
+        taskDeleteYes.setAttribute('class', 'fas fa-check-double todo-icon gi-todo-check delete' + objTodo.todo[key].id);
+        
         taskDeleteNo.setAttribute('id', 'no-todo-' + objTodo.todo[key].id);
-        taskDeleteNo.setAttribute('class', 'button-confirm far btn-delete delete' + objTodo.todo[key].id);
+        taskDeleteNo.setAttribute('class', 'far fa-times-circle todo-icon gi-todo-cancel delete' + objTodo.todo[key].id);
         taskDelete.setAttribute('id', 'delete' + objTodo.todo[key].id);
         taskDelete.setAttribute('class', 'far fa-trash-alt');
         taskDelete.setAttribute('onclick', 'todoDelete(' + objTodo.todo[key].id +')')
 
         taskTitle.appendChild(document.createTextNode(objTodo.todo[key].todoTask));
-        taskDeleteYes.appendChild(document.createTextNode('Yes'));
-        taskDeleteNo.appendChild(document.createTextNode('No'));
 
         taskWrapper.appendChild(taskTitle);
         taskWrapper.appendChild(taskDeleteYes);
@@ -371,6 +415,13 @@ function displayRandomQuote() {
     } else {
         return false;
     }
+}
+//------------------------------------------------------
+//select quote
+
+function displaySelectedQuote(key) {
+    quoteView.innerHTML = objQuotes.quotes[key].quote;
+    authorView.innerHTML = '— ' + objQuotes.quotes[key].author;
 }
 
 //------------------------------------------------------
@@ -464,23 +515,24 @@ function quotesList() {
     for (var key in objQuotes.quotes) {
         var taskWrapper = document.createElement('div');
         var taskTitle = document.createElement('span');
-        var taskDeleteYes = document.createElement('label');
-        var taskDeleteNo = document.createElement('label');
+        //var taskDeleteYes = document.createElement('label');
+        //var taskDeleteNo = document.createElement('label');
+        var taskDeleteYes = document.createElement('i');
+        var taskDeleteNo = document.createElement('i');
         var taskDelete = document.createElement('i');
 
         taskWrapper.setAttribute('class', 'quote-wrapper');
         taskTitle.setAttribute('class', 'quote-title');
+        taskTitle.setAttribute('onclick', 'displaySelectedQuote(' + key + ')');
         taskDeleteYes.setAttribute('id', 'yes-quote-' + objQuotes.quotes[key].id);
-        taskDeleteYes.setAttribute('class', 'button-confirm far btn-delete deleteQuote' + objQuotes.quotes[key].id);
+        taskDeleteYes.setAttribute('class', 'fas fa-check-double todo-icon gi-todo-check deleteQuote' + objQuotes.quotes[key].id);
         taskDeleteNo.setAttribute('id', 'no-quote-' + objQuotes.quotes[key].id);
-        taskDeleteNo.setAttribute('class', 'button-confirm far btn-delete deleteQuote' + objQuotes.quotes[key].id);
+        taskDeleteNo.setAttribute('class', 'far fa-times-circle todo-icon gi-todo-cancel deleteQuote' + objQuotes.quotes[key].id);
         taskDelete.setAttribute('id', 'deleteQuote' + objQuotes.quotes[key].id);
         taskDelete.setAttribute('class', 'far fa-trash-alt');
         taskDelete.setAttribute('onclick', 'quoteDelete(' + objQuotes.quotes[key].id +')')
 
         taskTitle.appendChild(document.createTextNode(objQuotes.quotes[key].quote));
-        taskDeleteYes.appendChild(document.createTextNode('Yes'));
-        taskDeleteNo.appendChild(document.createTextNode('No'));
 
         taskWrapper.appendChild(taskTitle);
         taskWrapper.appendChild(taskDeleteYes);
@@ -513,8 +565,170 @@ function displayRandomWeather() {
     weather.appendChild(weatherDescription);
 }
 
-/*
-<i class="weather fas fa-cloud-sun" ></i>
-<i class="degree"> 27°C</i>
-<i class="weather-desctiption">Partly Sunny</i>
-*/
+//------------------------------------------------------
+//goal
+goalLogo.addEventListener('click', function() {
+    document.getElementsByTagName('footer')[0].style.opacity = '0.1';
+});
+
+closeModal.addEventListener('click', function() {
+    document.getElementsByTagName('footer')[0].style.transition = 'all ease 1s';
+    document.getElementsByTagName('footer')[0].style.opacity = '1';
+});
+
+//------------------------------------------------------
+//new goal
+newGoal.addEventListener('keyup', function(e) {
+    if (e.key === 'Enter' || e.keyCode === 13) {
+        if (newGoal.value != ''){
+            if (objGoal.goal.length > 0) {
+                var lastGoalItem = objGoal.goal.length -1;
+                var newGoalId = objGoal.goal[lastGoalItem].id + 1;
+            } else {
+                var newGoalId = 1;
+            }
+            var myNewGoal = {
+                "id": newGoalId,
+                "goal": newGoal.value,
+                "status": 0,
+                "dateFinished": 0
+            };
+        
+            objGoal["goal"].push(myNewGoal);
+        
+            newGoal.value = '';
+            goalList();
+            currentGoal();
+        }
+    }
+});
+
+//------------------------------------------------------
+//fire goal delete
+
+function goalDelete(item) {
+    document.querySelector('#deleteGoal' + item).classList.add('hidden');
+
+    document.querySelectorAll('.deleteGoal' + item)[0].classList.add('block');
+    document.querySelectorAll('.deleteGoal' + item)[1].classList.add('block');
+
+    document.querySelector('#no-goal-' + item).addEventListener('click', function(){
+        document.querySelectorAll('.deleteGoal' + item)[0].classList.remove('block');
+        document.querySelectorAll('.deleteGoal' + item)[1].classList.remove('block');
+        document.querySelector('#deleteGoal' + item).classList.remove('hidden');
+    });
+
+    document.querySelector('#yes-goal-' + item).addEventListener('click', function(){
+
+        for (let i = 0; i < objGoal.goal.length; i++) {
+            if ( objGoal.goal[i].id == item ) {
+                //index = i;
+                objGoal.goal.splice(i, 1);
+                break;
+            }
+        }
+        goalList();
+        currentGoal();
+    });
+
+}
+
+//------------------------------------------------------
+//goal list
+function goalList() {
+    goalView.innerHTML = '';
+    const onGoingGoal = objGoal.goal.filter((goal) =>{
+        return goal.status == 0;
+    });
+    goalChecking(onGoingGoal);
+
+    const archivedGoal = objGoal.goal.filter((goal) =>{
+        return goal.status == 1;
+    });
+    goalChecking(archivedGoal);
+}
+
+function goalChecking(goalStatus) {
+    goalStatus.forEach((goal) => {
+        var goalWrapper = document.createElement('div');
+        var goalTitle = document.createElement('span');
+        var goalDeleteYes = document.createElement('i');
+        var goalDeleteNo = document.createElement('i');
+        var goalDelete = document.createElement('i');
+
+        goalWrapper.setAttribute('class', 'goal-wrapper');
+        goalTitle.setAttribute('class', 'goal-title');
+        goalDeleteYes.setAttribute('id', 'yes-goal-' + goal.id);
+        goalDeleteYes.setAttribute('class', 'fas fa-check-double goal-icon gi-goal-check deleteGoal' + goal.id);
+        goalDeleteNo.setAttribute('id', 'no-goal-' + goal.id);
+        goalDeleteNo.setAttribute('class', 'far fa-times-circle goal-icon gi-goal-cancel deleteGoal' + goal.id);
+        goalDelete.setAttribute('id', 'deleteGoal' + goal.id);
+        goalDelete.setAttribute('class', 'far fa-trash-alt');
+        goalDelete.setAttribute('onclick', 'goalDelete(' + goal.id +')')
+
+        goalTitle.appendChild(document.createTextNode(goal.goal));
+
+        if (goal.status == 1){
+            var lineBreak = document.createElement('br');
+            var goalFinised = document.createElement('small');
+            goalFinised.setAttribute('class', 'date-finished');
+            goalFinised.appendChild(document.createTextNode(goal.dateFinished));
+            goalTitle.appendChild(lineBreak);
+            goalTitle.appendChild(goalFinised);
+        }
+
+        goalWrapper.appendChild(goalTitle);
+        goalWrapper.appendChild(goalDeleteYes);
+        goalWrapper.appendChild(goalDeleteNo);
+        if (goal.status != 1) {
+            goalWrapper.appendChild(goalDelete);
+        }
+        goalView.appendChild(goalWrapper);
+    });
+    
+}
+
+//------------------------------------------------------
+//display current goal
+function currentGoal() {
+    goalDiv.innerHTML = '';
+    const currentGoal = objGoal.goal.find((goal) =>{
+        return goal.status === 0;
+    });
+    var mainGoalDone = document.createElement('i');
+    var goal = document.createElement('i');
+    var goalLabel = document.createElement('p');
+
+    goal.setAttribute('class', 'current-goal');
+
+    if (currentGoal != undefined){
+        mainGoalDone.setAttribute('onclick', 'mainGoalDone(' + currentGoal.id + ')');
+        mainGoalDone.setAttribute('class', 'fas fa-check-double goal-icon gi-check');
+
+        goal.innerHTML = "“ " + currentGoal.goal + " ”";
+        goalLabel.appendChild(document.createTextNode("—TODAY'S GOAL"));
+
+        goalDiv.appendChild(goal);
+        goalDiv.appendChild(mainGoalDone);
+        goalDiv.appendChild(goalLabel);
+    } else {
+        goal.innerHTML = "“ No goal for today ”";
+        goal.style.cursor = "auto";
+        goalDiv.appendChild(goal);
+    }
+}
+
+
+function mainGoalDone(id){
+    var goalFinishedDate = new Date();
+    var dateFinished = goalFinishedDate.getDate() + " " + monthList[goalFinishedDate.getMonth()] + " " + goalFinishedDate.getFullYear();
+    for (let i in objGoal.goal) {
+        if (objGoal.goal[i].id === id) {
+            objGoal.goal[i].status = 1;
+            objGoal.goal[i].dateFinished = dateFinished;
+            goalList();
+            currentGoal();
+            break;
+        }
+    }
+}

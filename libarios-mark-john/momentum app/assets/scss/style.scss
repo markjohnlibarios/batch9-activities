@@ -37,9 +37,24 @@ body {
     align-items: center;
 }
 
+.goal {
+    cursor: pointer;
+    margin-top: 30px;
+    img {
+        width: 90px;
+        opacity: 0.6;
+        transition: 0.5s;
+    }
+    &:hover{
+        img {
+            opacity: 1;
+        }
+    }
+}
+
 .quotes {
     display: none;
-    margin-top: 3%;
+    //smargin-top: 3%;
     color: #fff;
     width: 30%;
     cursor: pointer;
@@ -91,13 +106,13 @@ body {
             animation: pulseEffect infinite 1s;
             transition: 0.5s;
         }
-        &:hover{
+        &:hover {
             img {
                 opacity: 1;
             }
         }
     }
-    .request-name{
+    .request-name {
         display: none;
         width: 100%;
         height: 50px;
@@ -163,6 +178,8 @@ body {
         -o-animation: fadeIn 3s;
         -ms-animation: fadeIn 3s;
         .timer {
+            //position: relative;
+            margin-top: 15%;
             display: flex;
             justify-content: center;
             cursor: pointer;
@@ -191,8 +208,15 @@ body {
             }
         }
         #greetings {
-            font-size: 20px;
+            font-size: 30px;
             font-weight: 100;
+            margin-top: 25px;
+        }
+        #current-day {
+            color: #fff;
+            font-size: 20px;
+            margin-top: -40px;
+            letter-spacing: 3px;
         }
     }
 }
@@ -217,23 +241,14 @@ footer {
     padding: 15px;
     background-color: transparent;
     position: fixed;
+    //margin-top: 50%;
     bottom: 0;
     width: 100%;
-    z-index: 8;
     transition: transform 0.2s ease;
     -webkit-animation: fadeIn 3s;
     -moz-animation: fadeIn 3s;
     -o-animation: fadeIn 3s;
     -ms-animation: fadeIn 3s;
-    #current-day {
-        color: #fff;
-        font-size: 19px;
-        letter-spacing: 2px;
-        cursor: pointer;
-        &:hover {
-            text-shadow: 1px 1px 2px black, 0 0 25px rgb(75, 197, 70), 0 0 5px deepskyblue;
-        }
-    }
     .todo {
         color: #fff;
         font-size: 19px;
@@ -442,6 +457,9 @@ footer {
         display: flex;
         align-items: center;
         margin-top: 10px;
+        &:hover > .quote-title {
+            color: deepskyblue;
+        }
     }
     .quote-title {
         height: auto;
@@ -451,6 +469,7 @@ footer {
         outline-style: none;
         padding-left: 3px;
         padding-right: 3px;
+        cursor: pointer;
     }
 }
 
@@ -565,6 +584,9 @@ footer {
         display: flex;
         align-items: center;
         margin-top: 10px;
+        &:hover > .task-title {
+            color: deepskyblue;
+        }
     }
     .task-title {
         height: auto;
@@ -575,16 +597,6 @@ footer {
         padding-left: 3px;
         padding-right: 3px;
     }
-}
-
-.button-confirm {
-    float: right;
-    display: none;
-    transition: transform 0.2s ease;
-    -webkit-animation: fadeIn 1s;
-    -moz-animation: fadeIn 1s;
-    -o-animation: fadeIn 1s;
-    -ms-animation: fadeIn 1s;
 }
 
 .btn-delete {
@@ -684,5 +696,256 @@ footer {
     }
     100% {
         transform: skew(0deg);
+    }
+}
+
+/**setup modal**/
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    background: rgba(0, 0, 0, .8);
+    transition: all ease 1s;
+}
+
+.closeoverlay {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    display: block;
+    z-index: 2;
+    position: fixed;
+    cursor: pointer;
+}
+
+.closebutton {
+    color: #fff;
+    text-decoration: none;
+    font-size: 30px;
+    margin: 0 auto;
+    display: table;
+    float: right;
+    margin-right: 5px;
+    &:hover {
+        color: deepskyblue !important;
+    }
+}
+
+.modal:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal:target > .closeoverlay {
+    display: block;
+}
+
+.modal > div {
+    width: 55%;
+    height: 500px;
+    max-width: 75vw;
+    max-height: 75vh;
+    text-align: center;
+    position: relative;
+    background: transparent;
+    z-index: 3;
+    border-radius: 25px;
+}
+
+.wrap,
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.modal-content {
+    overflow-y:auto
+}
+
+.todays-goal-list {
+    margin-top: 30px;
+    font-size: 15px;
+    width: 400px;
+    text-align: center;
+    p {
+        font-size: 12px;
+        margin-top: 15px;
+    }
+    &:hover .goal-icon {
+        display: inline-block;
+    }
+}
+
+.current-goal{
+    cursor: pointer;
+}
+
+.goal-icon {
+    display: none;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.todo-icon {
+    display: none;
+    margin-left: 5px;
+    cursor: pointer;
+    float: right;
+    transition: transform 0.2s ease;
+    -webkit-animation: fadeIn 1s;
+    -moz-animation: fadeIn 1s;
+    -o-animation: fadeIn 1s;
+    -ms-animation: fadeIn 1s;
+}
+
+.gi-trash:hover {
+    color: rgb(180, 34, 34);
+}
+
+.gi-todo-cancel:hover {
+    color: rgb(180, 34, 34);
+}
+
+.gi-goal-cancel:hover {
+    color: rgb(180, 34, 34);
+}
+
+.gi-check:hover {
+    color: rgb(37, 165, 20);
+}
+
+.gi-todo-check:hover {
+    color: rgb(37, 165, 20);
+}
+
+.gi-goal-check:hover {
+    color: rgb(37, 165, 20);
+}
+
+.goal-div {
+    margin-left: 4%;
+    margin-top: 15px;
+    width: 93%;
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 3s;
+    -webkit-animation: fadeIn 3s;
+    -moz-animation: fadeIn 3s;
+    -o-animation: fadeIn 3s;
+    -ms-animation: fadeIn 3s;
+    input {
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        background: transparent;
+        &:focus + .label-name .content-name, &:valid + .label-name .content-name {
+            transform: translateY(-120%);
+            font-size: 14px;
+            color: #5fa8d3;
+        }
+        &:focus + .label-name::after, &:valid + .label-name::after {
+            transform: translateX(0%);
+        }
+    }
+    label {
+        position: absolute;
+        bottom: 0px;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        border-bottom: 1px solid #fff;
+        color: #fff;
+        &::after{
+            content: '';
+            position: absolute;
+            left: 0px;
+            bottom: -1px;
+            width: 100%;
+            height: 100%;
+            border-bottom:  3px solid #5fa8d3;
+            transform: translateX(-100%);
+            transition: transform 0.2s ease;
+        }
+        .content-name {
+            position: absolute;
+            bottom: 5px;
+            left: 0px;
+            transition: all 0.3s ease;
+        }
+    }
+}
+
+.goal-list-view {
+    display: block;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+    margin-bottom: 0px;
+    margin-right: 20px;
+    background: transparent;
+    height: 85%;
+    width: 95%;
+    font-size: 14px;
+    overflow: hidden;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+    &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px #57a1cc; 
+        border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px #57a1cc; 
+    }
+    .fa-trash-alt {
+        cursor: pointer;
+        height: 16px;
+        width: 16px;
+        vertical-align: middle;
+        margin-left: 15px;
+        &:hover {
+            color: #57a1cc;
+        }
+    }
+    .goal-wrapper {
+        height: auto;
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+        &:hover > .goal-title {
+            color: deepskyblue;
+        }
+    }
+    .goal-title {
+        height: auto;
+        width: 87%;
+        background: 0;
+        border: 0;
+        outline-style: none;
+        padding-left: 3px;
+        padding-right: 3px;
+        text-align: justify;
+        margin-top: 5px;
+        .date-finished {
+            font-style: italic;
+            font-size: 11px;
+            color: rgb(158, 158, 158);
+        }
     }
 }

@@ -36,15 +36,22 @@
                     <label for="users-name" class="label-name">
                         <span class="content-name">Name</span>
                     </label>
-                </div>
-                
+                </div> 
+
                 <div id="user-content" class="user-content">
-                        <div id="timer" class="timer" title="Change Time Format">
-                            <div id="clock" class="hour-minute"></div>
-                            <div id="seconds" class="seconds"></div>
-                            <div id="ampm" class="ampm">AM</div>
-                        </div>
+                    <div id="timer" class="timer" title="Change Time Format">
+                        <div id="clock" class="hour-minute"></div>
+                        <div id="seconds" class="seconds"></div>
+                        <div id="ampm" class="ampm">AM</div>
+                    </div>
+                    <p id="current-day"></p>
                     <p id="greetings">Welcome Top!</p>
+
+                    <div class="goal" id="goal">
+                        <a href="#M" id="goal-logo"><img src="assets/img/goal.png" /></a>
+                    </div>
+                            
+                    <div id="todays-goal-list" class="todays-goal-list"></div>
                 </div>
             </div>
 
@@ -80,8 +87,25 @@
             <div id="todo-view" class="todo-list-view"></div>
         </div>
 
+        <div class="wrap">
+            <div id="M" class="modal">
+                <div class="modal-content">
+                    <a class="closebutton" href="#">&times;</a>
+                    <div id="goal-div" class="goal-div">
+                        <input type="text" id="goal-type" name="goal-type" required autocomplete="off">
+                        <label for="goal-type" class="label-name">
+                            <span class="content-name">Today's Goal</span>
+                        </label>
+                    </div> 
+
+                    <div id="goal-view" class="goal-list-view"></div>
+                </div>
+                <a href="#" class="closeoverlay" id="close-overlay"></a>
+            </div>
+        </div>
+
         <footer>
-            <p id="current-day"></p>
+            <p>&nbsp;</p>
             <p id="todo" class="todo">TODO List</p>
         </footer>
     
