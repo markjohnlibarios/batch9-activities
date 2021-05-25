@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="assets/img/fav.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
     <script type="text/javascript" src="assets/js/game.js" defer></script>
@@ -11,7 +12,7 @@
 </head>
 <body>
 
-    <div id="fireworks" class="">
+    <div id="fireworks" style="overflow: hidden">
         <div class="before"></div>
         <div id="board" class="board">
             <div id="1" class="slot slot-1"></div>
@@ -23,6 +24,13 @@
             <div id="7" class="slot slot-7"></div>
             <div id="8" class="slot slot-8"></div>
             <div id="9" class="slot slot-9"></div>
+        </div>
+        <div class="options">
+            <button class="btn"><i class="fa fa-home"></i></button>
+            <button class="btn"><i class="fa fa-bars"></i></button>
+            <button class="btn"><i class="fa fa-trash"></i></button>
+            <button class="btn"><i class="fa fa-close"></i></button>
+            <button class="btn"><i class="fa fa-folder"></i></button>
         </div>
         <div class="after"></div>
     </div>

@@ -147,7 +147,7 @@ function gameFinish(decision) {
  * 0-4-8 arr[0][0], arr[1][1], arr[2][2] -
  * 1-4-7 arr[0][1], arr[1][1], arr[2][1] -
  * 2-5-8 arr[0][2], arr[1][2], arr[2][2] -
- * 2-4-6 arr[0][2], arr[1][1], arr[2][0]
+ * 2-4-6 arr[0][2], arr[1][1], arr[2][0] -
  */
 
  /***
@@ -160,3 +160,4 @@ function gameFinish(decision) {
    * every click on the slot
    * previous - next can be determine easily
    */
+// replayarray = []

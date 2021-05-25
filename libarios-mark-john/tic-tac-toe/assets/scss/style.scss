@@ -30,7 +30,28 @@ body {
 }
 
 /**
- * fireworks effects;
+ * options
+ */
+
+.options {
+	margin: 0 auto;
+}
+
+.btn {
+	background-color: DodgerBlue;
+	border: none;
+	color: white;
+	padding: 12px 16px;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.btn:hover {
+	background-color: RoyalBlue;
+}
+
+/**
+ * fireworks effects
  **/
 
  .pyro > .before, .pyro > .after {
