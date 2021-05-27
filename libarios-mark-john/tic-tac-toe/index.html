@@ -14,23 +14,30 @@
 
     <div id="fireworks" style="overflow: hidden">
         <div class="before"></div>
+        <div class="player">
+            <div class="player-select-piece">
+                <i id="player-1" class="player-piece">Player 1 (O)</i>
+                <i id="player-2" class="player-piece">Player 2 (X)</i>
+            </div>
+        </div>
         <div id="board" class="board">
-            <div id="1" class="slot slot-1"></div>
-            <div id="2" class="slot slot-2"></div>
-            <div id="3" class="slot slot-3"></div>
-            <div id="4" class="slot slot-4"></div>
-            <div id="5" class="slot slot-5"></div>
-            <div id="6" class="slot slot-6"></div>
-            <div id="7" class="slot slot-7"></div>
-            <div id="8" class="slot slot-8"></div>
-            <div id="9" class="slot slot-9"></div>
+            <div id="1" class="slot"></div>
+            <div id="2" class="slot"></div>
+            <div id="3" class="slot"></div>
+            <div id="4" class="slot"></div>
+            <div id="5" class="slot"></div>
+            <div id="6" class="slot"></div>
+            <div id="7" class="slot"></div>
+            <div id="8" class="slot"></div>
+            <div id="9" class="slot"></div>
         </div>
         <div class="options">
-            <button class="btn"><i class="fa fa-home"></i></button>
-            <button class="btn"><i class="fa fa-bars"></i></button>
-            <button class="btn"><i class="fa fa-trash"></i></button>
-            <button class="btn"><i class="fa fa-close"></i></button>
-            <button class="btn"><i class="fa fa-folder"></i></button>
+            <div class="controls">
+                <i id="previous" class="control fa fa-mail-reply" title="Previous"></i>
+                <i id="next" class="control fa fa-mail-forward" title="Next"></i>
+                <i id="new-game" class="control fa fa-refresh" title="New Game"></i>
+                <i id="replay" class="control fa fa-retweet" title="Replay"></i>
+            </div>
         </div>
         <div class="after"></div>
     </div>
