@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="assets/img/fav.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
     <script type="text/javascript" src="assets/js/game.js" defer></script>
@@ -11,18 +12,32 @@
 </head>
 <body>
 
-    <div id="fireworks" class="">
+    <div id="fireworks" style="overflow: hidden">
         <div class="before"></div>
+        <div class="player">
+            <div class="player-select-piece">
+                <i id="player-1" class="player-piece">Player 1 (O)</i>
+                <i id="player-2" class="player-piece">Player 2 (X)</i>
+            </div>
+        </div>
         <div id="board" class="board">
-            <div id="1" class="slot slot-1"></div>
-            <div id="2" class="slot slot-2"></div>
-            <div id="3" class="slot slot-3"></div>
-            <div id="4" class="slot slot-4"></div>
-            <div id="5" class="slot slot-5"></div>
-            <div id="6" class="slot slot-6"></div>
-            <div id="7" class="slot slot-7"></div>
-            <div id="8" class="slot slot-8"></div>
-            <div id="9" class="slot slot-9"></div>
+            <div id="1" class="slot"></div>
+            <div id="2" class="slot"></div>
+            <div id="3" class="slot"></div>
+            <div id="4" class="slot"></div>
+            <div id="5" class="slot"></div>
+            <div id="6" class="slot"></div>
+            <div id="7" class="slot"></div>
+            <div id="8" class="slot"></div>
+            <div id="9" class="slot"></div>
+        </div>
+        <div class="options">
+            <div class="controls">
+                <i id="previous" class="control fa fa-mail-reply" title="Previous"></i>
+                <i id="next" class="control fa fa-mail-forward" title="Next"></i>
+                <i id="new-game" class="control fa fa-refresh" title="New Game"></i>
+                <i id="replay" class="control fa fa-retweet" title="Replay"></i>
+            </div>
         </div>
         <div class="after"></div>
     </div>
