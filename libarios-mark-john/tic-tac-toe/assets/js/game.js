@@ -4,9 +4,8 @@ var winnerState = 0;
 var clickCounter = 0;
 var replayCounter = 0;
 var slots = document.getElementsByClassName('slot');
-var body = document.getElementsByTagName('body')[0];
-var board = document.querySelector('#board');
 var fireworks = document.querySelector('#fireworks');
+var greetings = document.querySelector('#greetings');
 var boardArray = [
     ['', '', ''],
     ['', '', ''],
@@ -21,6 +20,8 @@ var newGame = document.querySelector('#new-game');
 var replay = document.querySelector('#replay');
 var player1 = document.querySelector('#player-1');
 var player2 = document.querySelector('#player-2');
+var player1Turn = document.querySelector('#player1-turn');
+var player2Turn = document.querySelector('#player2-turn');
 
 player1.addEventListener('click', function() {
     changePiece();
@@ -33,13 +34,13 @@ player2.addEventListener('click', function() {
 function changePiece() {
     if (clickCounter == 0){
         if (playerTurnState == 1) {
-            player1.innerHTML = 'Player 1 (X)';
-            player2.innerHTML = 'Player 2 (O)';
+            player1.innerHTML = 'X';
+            player2.innerHTML = 'O';
             playerTurnState = 2;
             playerSelectState = 2;
         } else {
-            player1.innerHTML = 'Player 1 (O)';
-            player2.innerHTML = 'Player 2 (X)';
+            player1.innerHTML = 'O';
+            player2.innerHTML = 'X';
             playerTurnState = 1;
             playerSelectState = 1;
         }
@@ -59,7 +60,6 @@ document.addEventListener('click', function(e) {
     createPiece.setAttribute('class', 'blinker');
 
     //check if slot is available to fill piece
-    //if (target !== body && target !== board && text === '' && winnerState == 0){
     if (target.classList == 'slot' && text === '' && winnerState == 0){
         var playerState = playerTurn(playerTurnState);
         
@@ -73,20 +73,16 @@ document.addEventListener('click', function(e) {
             pieceColor = '#fff';
         }
 
-        if (clickCounter == 1) {
+        /*if (clickCounter == 1) {
             newGame.classList.add('show');
-        }
-
-        /*target.innerHTML = piece;
-        target.style.color = pieceColor;
-        setPiece(target.id, piece);
-        checkWin();*/
+        }*/
 
         createPiece.innerHTML = piece;
         target.style.color = pieceColor;
         parentDiv.appendChild(createPiece);
         setPiece(target.id, piece);
         checkWin();
+        displayTurn();
     }
 });
 
@@ -98,6 +94,22 @@ function playerTurn(playerState) {
     }
 
     return playerTurnState;
+}
+
+function displayTurn() {
+    if (winnerState == 0) {
+        if (player1Turn.classList == 'button active') {
+            player1Turn.classList.remove('active');
+            player1Turn.classList.add('inactive');
+            player2Turn.classList.remove('inactive');
+            player2Turn.classList.add('active');
+        } else {
+            player1Turn.classList.add('active');
+            player1Turn.classList.remove('inactive');
+            player2Turn.classList.add('inactive');
+            player2Turn.classList.remove('active');
+        }
+    }
 }
 
 function setPiece(targetSlot, piece) {
@@ -189,6 +201,14 @@ function gameFinish(decision, p1, p2, p3) {
         piece1.classList.add('blink');
         piece2.classList.add('blink');
         piece3.classList.add('blink');
+
+        greetings.classList.add('greetings-show');
+
+        player1Turn.className = '';
+        player2Turn.className = '';
+
+        player1Turn.setAttribute('class', 'button inactive');
+        player2Turn.setAttribute('class', 'button inactive');
     } else {
         console.log('Draw');
     }
@@ -211,6 +231,12 @@ newGame.addEventListener('click', function(e) {
     for (const slot of slots) {
         slot.style.cursor = 'pointer';
     }
+
+    player1Turn.className = '';
+    player2Turn.className = '';
+
+    player1Turn.setAttribute('class', 'button active');
+    player2Turn.setAttribute('class', 'button inactive');
 });
 
 replay.addEventListener('click', function() {
@@ -225,7 +251,7 @@ function resetGame() {
 
     //clear board array
     for (const boardslot of boardArray) {
-        for (let i = 0; i < boardslot.length; i ++){
+        for (let i = 0; i < boardslot.length; i++){
             boardslot[i] = '';
         }
     }
@@ -235,6 +261,7 @@ function resetGame() {
     }
 
     fireworks.classList.remove('pyro');
+    greetings.classList.remove('greetings-show');
 }
 
 function removeControls() {
@@ -269,14 +296,16 @@ function fillSlot(slot, piece) {
 }
 
 function previousMove() {
-    replayCounter--;
-    removeSlot(replayArray[replayCounter].slot);
-    if (replayCounter == 0) {
-        previous.classList.remove('show');
-    }
+    if (replayCounter != 0){
+        replayCounter--;
+        removeSlot(replayArray[replayCounter].slot);
+        if (replayCounter == 0) {
+            previous.classList.remove('show');
+        }
 
-    if (replayCounter != replayArray.length) {
-        next.classList.add('show');
+        if (replayCounter != replayArray.length) {
+            next.classList.add('show');
+        }
     }
 }
 
