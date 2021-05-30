@@ -167,6 +167,20 @@ body {
 	.greetings-show {
 		display: inline-block;
 	}
+	.greetings-draw {
+		display: none;
+		margin-top: 25%;
+		border-bottom: transparent;
+		position: absolute;
+		.message {
+			justify-content: center;
+			font-weight: bold;
+			border-bottom: transparent;
+		}
+	}
+	.greetings-draw-show {
+		display: inline-block;
+	}
 	.controls {
 		display: flex;
 		margin-top: 85%;
@@ -175,16 +189,22 @@ body {
 			justify-content: center;
 			border-bottom: transparent;
 			font-size: 20px;
-			background: #df7514;
 			border-radius: 15px;
 			width: 20%;
+			color: #fff;
+		}
+		.control-inactive {
+			background: #585858;
+			cursor: auto;
+		}
+		.control-active {
+			background: #df7514;
 			&:hover {
 				background: #b46011
 			}
-		}
-		.fa {
-			cursor: pointer;
-			color: #fff;
+			.fa {
+				cursor: pointer;
+			}
 		}
 	}
 }

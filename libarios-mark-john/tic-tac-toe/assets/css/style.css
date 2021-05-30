@@ -132,6 +132,20 @@ body {
 .controller .greetings-show {
   display: inline-block;
 }
+.controller .greetings-draw {
+  display: none;
+  margin-top: 25%;
+  border-bottom: transparent;
+  position: absolute;
+}
+.controller .greetings-draw .message {
+  justify-content: center;
+  font-weight: bold;
+  border-bottom: transparent;
+}
+.controller .greetings-draw-show {
+  display: inline-block;
+}
 .controller .controls {
   display: flex;
   margin-top: 85%;
@@ -141,16 +155,22 @@ body {
   justify-content: center;
   border-bottom: transparent;
   font-size: 20px;
-  background: #df7514;
   border-radius: 15px;
   width: 20%;
+  color: #fff;
 }
-.controller .controls .control:hover {
+.controller .controls .control-inactive {
+  background: #585858;
+  cursor: auto;
+}
+.controller .controls .control-active {
+  background: #df7514;
+}
+.controller .controls .control-active:hover {
   background: #b46011;
 }
-.controller .controls .fa {
+.controller .controls .control-active .fa {
   cursor: pointer;
-  color: #fff;
 }
 
 footer {

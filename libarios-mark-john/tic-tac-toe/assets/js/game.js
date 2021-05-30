@@ -6,6 +6,7 @@ var replayCounter = 0;
 var slots = document.getElementsByClassName('slot');
 var fireworks = document.querySelector('#fireworks');
 var greetings = document.querySelector('#greetings');
+var greetingsDraw = document.querySelector('#greetings-draw');
 var boardArray = [
     ['', '', ''],
     ['', '', ''],
@@ -73,9 +74,10 @@ document.addEventListener('click', function(e) {
             pieceColor = '#fff';
         }
 
-        /*if (clickCounter == 1) {
-            newGame.classList.add('show');
-        }*/
+        if (clickCounter == 1) {
+            newGame.classList.remove('control-inactive');
+            newGame.classList.add('control-active');
+        }
 
         createPiece.innerHTML = piece;
         target.style.color = pieceColor;
@@ -210,40 +212,49 @@ function gameFinish(decision, p1, p2, p3) {
         player1Turn.setAttribute('class', 'button inactive');
         player2Turn.setAttribute('class', 'button inactive');
     } else {
-        console.log('Draw');
+        greetingsDraw.classList.add('greetings-draw-show');
     }
 
     for (const slot of slots) {
         slot.style.cursor = 'auto';
     }
 
-    replay.classList.add('show');
+    replay.classList.remove('control-inactive');
+    replay.classList.add('control-active');
 }
 
 newGame.addEventListener('click', function(e) {
-    replayArray = [];
-    resetGame();
-    removeControls();
-    winnerState = 0;
-    clickCounter = 0;
-    playerTurnState = playerSelectState;
+    if (clickCounter != 0) {
+        replayArray = [];
+        resetGame();
+        removeControls();
+        winnerState = 0;
+        clickCounter = 0;
+        playerTurnState = playerSelectState;
 
-    for (const slot of slots) {
-        slot.style.cursor = 'pointer';
+        for (const slot of slots) {
+            slot.style.cursor = 'pointer';
+        }
+
+        player1Turn.className = '';
+        player2Turn.className = '';
+
+        player1Turn.setAttribute('class', 'button active');
+        player2Turn.setAttribute('class', 'button inactive');
+        
+        newGame.classList.remove('control-active');
+        newGame.classList.add('control-inactive');
     }
-
-    player1Turn.className = '';
-    player2Turn.className = '';
-
-    player1Turn.setAttribute('class', 'button active');
-    player2Turn.setAttribute('class', 'button inactive');
 });
 
 replay.addEventListener('click', function() {
-    resetGame();
-    showControls();
-    replayCounter = 0;
-    previous.classList.remove('show');
+    if (winnerState != 0) {
+        resetGame();
+        showControls();
+        replayCounter = 0;
+        previous.classList.remove('control-active');
+        previous.classList.add('control-inactive');
+    }
 });
 
 function resetGame() {
@@ -262,30 +273,35 @@ function resetGame() {
 
     fireworks.classList.remove('pyro');
     greetings.classList.remove('greetings-show');
+    greetingsDraw.classList.remove('greetings-draw-show');
 }
 
 function removeControls() {
-    newGame.classList.remove('show');
-    previous.classList.remove('show');
-    next.classList.remove('show');
-    replay.classList.remove('show');
+    newGame.classList.remove('control-active');
+    previous.classList.remove('control-active');
+    next.classList.remove('control-active');
+    replay.classList.remove('control-active');
+    replay.classList.add('control-inactive');
 }
 
 function showControls() {
-    next.classList.add('show');
+    next.classList.add('control-active');
 }
 
 function nextMove() {
-    if (replayCounter != replayArray.length){
-        fillSlot(replayArray[replayCounter].slot, replayArray[replayCounter].piece);
-    } 
-    
-    if (replayCounter == replayArray.length) {
-        next.classList.remove('show');
-    }
 
-    if (replayCounter == 1) {
-        previous.classList.add('show');
+    if (replayCounter != replayArray.length) {
+        if (replayCounter != replayArray.length){
+            fillSlot(replayArray[replayCounter].slot, replayArray[replayCounter].piece);
+        } 
+        
+        if (replayCounter == replayArray.length) {
+            next.classList.remove('control-active');
+        }
+    
+        if (replayCounter == 1) {
+            previous.classList.add('control-active');
+        }
     }
 }
 
@@ -300,11 +316,11 @@ function previousMove() {
         replayCounter--;
         removeSlot(replayArray[replayCounter].slot);
         if (replayCounter == 0) {
-            previous.classList.remove('show');
+            previous.classList.remove('control-active');
         }
 
         if (replayCounter != replayArray.length) {
-            next.classList.add('show');
+            next.classList.add('control-active');
         }
     }
 }
