@@ -209,11 +209,12 @@ function gameFinish(decision, p1, p2, p3) {
         player1Turn.className = '';
         player2Turn.className = '';
 
-        player1Turn.setAttribute('class', 'button inactive');
-        player2Turn.setAttribute('class', 'button inactive');
     } else {
         greetingsDraw.classList.add('greetings-draw-show');
     }
+
+    player1Turn.setAttribute('class', 'button inactive');
+    player2Turn.setAttribute('class', 'button inactive');
 
     for (const slot of slots) {
         slot.style.cursor = 'auto';
