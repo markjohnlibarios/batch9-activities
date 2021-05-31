@@ -12,14 +12,35 @@
 </head>
 <body>
 
-    <div id="fireworks" style="overflow: hidden">
-        <div class="before"></div>
-        <div class="player">
-            <div class="player-select-piece">
-                <i id="player-1" class="player-piece">Player 1 (O)</i>
-                <i id="player-2" class="player-piece">Player 2 (X)</i>
-            </div>
+    <div class="controller">
+        <div>
+            <p>PLAYER 1</p>
+            <p id="player-1" class="player-piece">O</p>
         </div>
+        <div>
+            <p>PLAYER 2</p>
+            <p id="player-2" class="player-piece">X</p>
+        </div>
+        <div class="turn">
+            <div id="player1-turn" class="button active">Player 1</div>
+            <div id="player2-turn" class="button inactive">Player 2</div>
+        </div>
+        <div id="greetings" class="greetings">
+            <div class="message blink-hue">CONGRATULATIONS</div>
+        </div>
+        <div id="greetings-draw" class="greetings-draw">
+            <div class="message blink-hue">GAME DRAW</div>
+        </div>
+        <div class="controls">
+            <div id="previous" class="control control-inactive"><i class="fa fa-step-backward" title="Previous"></i></div>
+            <div id="next" class="control control-inactive"><i class="fa fa-step-forward" title="Next"></i></div>
+            <div id="new-game" class="control control-inactive"><i class="fa fa-refresh" title="New Game"></i></div>
+            <div id="replay" class="control control-inactive"><i class="fa fa-repeat" title="Replay"></i></div>
+        </div>
+    </div>
+
+    <div id="fireworks">
+        <div class="before"></div>
         <div id="board" class="board">
             <div id="1" class="slot"></div>
             <div id="2" class="slot"></div>
@@ -31,16 +52,20 @@
             <div id="8" class="slot"></div>
             <div id="9" class="slot"></div>
         </div>
-        <div class="options">
+        <!-- <div class="options">
             <div class="controls">
                 <i id="previous" class="control fa fa-mail-reply" title="Previous"></i>
                 <i id="next" class="control fa fa-mail-forward" title="Next"></i>
                 <i id="new-game" class="control fa fa-refresh" title="New Game"></i>
                 <i id="replay" class="control fa fa-retweet" title="Replay"></i>
             </div>
-        </div>
+        </div> -->
         <div class="after"></div>
     </div>
+
+    <footer>
+        <p>Avion School Project &#169; 2021</p>
+    </footer>
     
 </body>
 </html>

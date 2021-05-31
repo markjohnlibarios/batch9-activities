@@ -1,11 +1,12 @@
 var playerTurnState = 1;
-var playerSelectState;
+var playerSelectState = 1;
 var winnerState = 0;
 var clickCounter = 0;
 var replayCounter = 0;
-var body = document.getElementsByTagName('body')[0];
-var board = document.querySelector('#board');
+var slots = document.getElementsByClassName('slot');
 var fireworks = document.querySelector('#fireworks');
+var greetings = document.querySelector('#greetings');
+var greetingsDraw = document.querySelector('#greetings-draw');
 var boardArray = [
     ['', '', ''],
     ['', '', ''],
@@ -20,6 +21,8 @@ var newGame = document.querySelector('#new-game');
 var replay = document.querySelector('#replay');
 var player1 = document.querySelector('#player-1');
 var player2 = document.querySelector('#player-2');
+var player1Turn = document.querySelector('#player1-turn');
+var player2Turn = document.querySelector('#player2-turn');
 
 player1.addEventListener('click', function() {
     changePiece();
@@ -32,13 +35,13 @@ player2.addEventListener('click', function() {
 function changePiece() {
     if (clickCounter == 0){
         if (playerTurnState == 1) {
-            player1.innerHTML = 'Player 1 (X)';
-            player2.innerHTML = 'Player 2 (O)';
+            player1.innerHTML = 'X';
+            player2.innerHTML = 'O';
             playerTurnState = 2;
             playerSelectState = 2;
         } else {
-            player1.innerHTML = 'Player 1 (O)';
-            player2.innerHTML = 'Player 2 (X)';
+            player1.innerHTML = 'O';
+            player2.innerHTML = 'X';
             playerTurnState = 1;
             playerSelectState = 1;
         }
@@ -51,10 +54,13 @@ document.addEventListener('click', function(e) {
 
     e = e || window.event;
     var target = e.target || e.srcElement;
-    var text = target.textContent || target.innerText;   
+    var text = target.textContent || target.innerText;  
+    var parentDiv = document.getElementById(target.id);
+    var createPiece = document.createElement('i');
+    createPiece.setAttribute('id', 'pc' + target.id);
+    createPiece.setAttribute('class', 'blinker');
 
     //check if slot is available to fill piece
-    //if (target !== body && target !== board && text === '' && winnerState == 0){
     if (target.classList == 'slot' && text === '' && winnerState == 0){
         var playerState = playerTurn(playerTurnState);
         
@@ -62,20 +68,23 @@ document.addEventListener('click', function(e) {
         //change player state if you want to change piece
         if (playerState == 1) {
             piece = 'X';
-            pieceColor = 'red';
+            pieceColor = '#000';
         } else {
             piece = 'O';
-            pieceColor = 'white';
+            pieceColor = '#fff';
         }
 
         if (clickCounter == 1) {
-            newGame.classList.add('show');
+            newGame.classList.remove('control-inactive');
+            newGame.classList.add('control-active');
         }
 
-        target.innerHTML = piece;
+        createPiece.innerHTML = piece;
         target.style.color = pieceColor;
+        parentDiv.appendChild(createPiece);
         setPiece(target.id, piece);
         checkWin();
+        displayTurn();
     }
 });
 
@@ -87,6 +96,22 @@ function playerTurn(playerState) {
     }
 
     return playerTurnState;
+}
+
+function displayTurn() {
+    if (winnerState == 0) {
+        if (player1Turn.classList == 'button active') {
+            player1Turn.classList.remove('active');
+            player1Turn.classList.add('inactive');
+            player2Turn.classList.remove('inactive');
+            player2Turn.classList.add('active');
+        } else {
+            player1Turn.classList.add('active');
+            player1Turn.classList.remove('inactive');
+            player2Turn.classList.add('inactive');
+            player2Turn.classList.remove('active');
+        }
+    }
 }
 
 function setPiece(targetSlot, piece) {
@@ -117,81 +142,119 @@ function checkWin() {
         boardArray[0][0] == boardArray[0][1] && boardArray[0][1] == boardArray[0][2]
         && boardArray[0][0] != '' && boardArray[0][1] != '' && boardArray[0][2] != ''
     ) {
-        gameFinish('win');
+        gameFinish('win', 1, 2, 3);
     }
     else if (
         boardArray[1][0] == boardArray[1][1] && boardArray[1][1] == boardArray[1][2]
         && boardArray[1][0] != '' && boardArray[1][1] != '' && boardArray[1][2] != ''
     ) {
-        gameFinish('win');
+        gameFinish('win', 4, 5, 6);
     }
     else if (
         boardArray[2][0] == boardArray[2][1] && boardArray[2][1] == boardArray[2][2]
         && boardArray[2][0] != '' && boardArray[2][1] != '' && boardArray[2][2] != ''
     ) {
-        gameFinish('win');
+        gameFinish('win', 7, 8, 9);
     }
     else if (
         boardArray[0][0] == boardArray[1][0] && boardArray[1][0] == boardArray[2][0]
         && boardArray[0][0] != '' && boardArray[1][0] != '' && boardArray[2][0] != ''
     ) {
-        gameFinish('win');
+        gameFinish('win', 1, 4, 7);
     }
     else if (
         boardArray[0][0] == boardArray[1][1] && boardArray[1][1] == boardArray[2][2]
         && boardArray[0][0] != '' && boardArray[1][1] != '' && boardArray[2][2] != ''
     ) {
-        gameFinish('win');
+        gameFinish('win', 1, 5, 9);
     }
     else if (
         boardArray[0][1] == boardArray[1][1] && boardArray[1][1] == boardArray[2][1]
         && boardArray[0][1] != '' && boardArray[1][1] != '' && boardArray[2][1] != ''
     ) {
-        gameFinish('win');
+        gameFinish('win', 2, 5, 8);
     }
     else if (
         boardArray[0][2] == boardArray[1][2] && boardArray[1][2] == boardArray[2][2]
         && boardArray[0][2] != '' && boardArray[1][2] != '' && boardArray[2][2] != ''
     ) {
-        gameFinish('win');
+        gameFinish('win', 3, 6, 9);
     }
     else if (
         boardArray[0][2] == boardArray[1][1] && boardArray[1][1] == boardArray[2][0]
         && boardArray[0][2] != '' && boardArray[1][1] != '' && boardArray[2][0] != ''
     ) {
-        gameFinish('win');
+        gameFinish('win', 3, 5, 7);
     } else if (clickCounter == 9) {
         gameFinish('draw');
     }
 }
 
-function gameFinish(decision) {
-    var slots = document.getElementsByClassName('slot');
+function gameFinish(decision, p1, p2, p3) {
+    var piece1 = document.getElementById('pc' + p1);
+    var piece2 = document.getElementById('pc' + p2);
+    var piece3 = document.getElementById('pc' + p3);
 
     winnerState = 1;
 
     if (decision == 'win') {
         fireworks.classList.add('pyro');
+        
+        piece1.classList.add('blink');
+        piece2.classList.add('blink');
+        piece3.classList.add('blink');
+
+        greetings.classList.add('greetings-show');
+
+        player1Turn.className = '';
+        player2Turn.className = '';
+
+        player1Turn.setAttribute('class', 'button inactive');
+        player2Turn.setAttribute('class', 'button inactive');
     } else {
-        console.log('Draw');
+        greetingsDraw.classList.add('greetings-draw-show');
     }
 
     for (const slot of slots) {
         slot.style.cursor = 'auto';
     }
 
-    replay.classList.add('show');
+    replay.classList.remove('control-inactive');
+    replay.classList.add('control-active');
 }
 
 newGame.addEventListener('click', function(e) {
-    replayArray = [];
-    resetGame();
-    removeControls();
+    if (clickCounter != 0) {
+        replayArray = [];
+        resetGame();
+        removeControls();
+        winnerState = 0;
+        clickCounter = 0;
+        playerTurnState = playerSelectState;
+
+        for (const slot of slots) {
+            slot.style.cursor = 'pointer';
+        }
+
+        player1Turn.className = '';
+        player2Turn.className = '';
+
+        player1Turn.setAttribute('class', 'button active');
+        player2Turn.setAttribute('class', 'button inactive');
+        
+        newGame.classList.remove('control-active');
+        newGame.classList.add('control-inactive');
+    }
 });
 
 replay.addEventListener('click', function() {
-    resetGame();
-    showControls();
+    if (winnerState != 0) {
+        resetGame();
+        showControls();
+        replayCounter = 0;
+        previous.classList.remove('control-active');
+        previous.classList.add('control-inactive');
+    }
 });
 
 function resetGame() {
@@ -199,7 +262,7 @@ function resetGame() {
 
     //clear board array
     for (const boardslot of boardArray) {
-        for (let i = 0; i < boardslot.length; i ++){
+        for (let i = 0; i < boardslot.length; i++){
             boardslot[i] = '';
         }
     }
@@ -208,27 +271,38 @@ function resetGame() {
         slot.innerHTML = '';
     }
 
-    winnerState = 0;
-    clickCounter = 0;
-    playerTurnState = playerSelectState;
     fireworks.classList.remove('pyro');
+    greetings.classList.remove('greetings-show');
+    greetingsDraw.classList.remove('greetings-draw-show');
 }
 
 function removeControls() {
-    newGame.classList.remove('show');
-    previous.classList.remove('show');
-    next.classList.remove('show');
-    replay.classList.remove('show');
+    newGame.classList.remove('control-active');
+    previous.classList.remove('control-active');
+    next.classList.remove('control-active');
+    replay.classList.remove('control-active');
+    replay.classList.add('control-inactive');
 }
 
 function showControls() {
-    previous.classList.add('show');
-    next.classList.add('show');
+    next.classList.add('control-active');
 }
 
 function nextMove() {
-    //console.log(replayArray[replayCounter].slot + ' ' + replayArray[replayCounter].piece);
-    fillSlot(replayArray[replayCounter].slot, replayArray[replayCounter].piece);
+
+    if (replayCounter != replayArray.length) {
+        if (replayCounter != replayArray.length){
+            fillSlot(replayArray[replayCounter].slot, replayArray[replayCounter].piece);
+        } 
+        
+        if (replayCounter == replayArray.length) {
+            next.classList.remove('control-active');
+        }
+    
+        if (replayCounter == 1) {
+            previous.classList.add('control-active');
+        }
+    }
 }
 
 function fillSlot(slot, piece) {
@@ -238,8 +312,17 @@ function fillSlot(slot, piece) {
 }
 
 function previousMove() {
-    replayCounter--;
-    removeSlot(replayArray[replayCounter].slot);
+    if (replayCounter != 0){
+        replayCounter--;
+        removeSlot(replayArray[replayCounter].slot);
+        if (replayCounter == 0) {
+            previous.classList.remove('control-active');
+        }
+
+        if (replayCounter != replayArray.length) {
+            next.classList.add('control-active');
+        }
+    }
 }
 
 function removeSlot(slot) {
