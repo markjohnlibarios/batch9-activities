@@ -58,26 +58,6 @@ body {
  * options
  */
 
-// .options {
-// 	margin: 0 auto;
-// 	text-align: center;
-// 	margin-top: 15px;
-// 	//-webkit-animation: fadein 2s, fadeout 2s 2.5s;
-// 	//animation: fadein 2s, fadeout 2s 2.5s;
-// }
-
-// .controls {
-//   	font-size: 25px;
-// 	margin-left: 20px;
-// }
-
-.player-select-piece {
-	font-size: 20px;
-	margin-left: 20px;
-	display: flex;
-	justify-content: center;
-}
-
 .player-piece {
 	cursor: pointer;
 	margin-right: 15px;
@@ -90,22 +70,6 @@ body {
 	}
 }
 
-// .control {
-// 	display: none;
-// 	cursor: pointer;
-// 	margin-right: 15px;
-// 	color: DodgerBlue;
-// 	-webkit-animation: fadein 2s;
-// 	animation: fadein 2s;
-// 	&:hover {
-// 		color: RoyalBlue;
-// 	}
-// }
-
-// .show {
-// 	display: inline-block;
-// }
-
 .controller {
 	border: 1px solid #000;
 	height: 50%;
@@ -117,7 +81,7 @@ body {
 		border-bottom: 1px solid rgb(133, 133, 133);
 		text-align: center;
 		display: flex;
-		justify-content: space-between;
+		justify-content: space-around;
 		p {
 			font-weight: 700;
 			margin: 10px 25px 10px 25px;
@@ -143,13 +107,9 @@ body {
 			font-size: 20px;
 		}
 		.active {
-			// -webkit-animation: fadein 2s;
-			// animation: fadein 2s;
 			background: rgb(223, 117, 20);
 		}
 		.inactive {
-			// -webkit-animation: fadeout 1s;
-			// animation: fadeout 1s;
 			background: rgb(136, 136, 136);
 		}
 	}

@@ -55,13 +55,6 @@ body {
 /**
  * options
  */
-.player-select-piece {
-  font-size: 20px;
-  margin-left: 20px;
-  display: flex;
-  justify-content: center;
-}
-
 .player-piece {
   cursor: pointer;
   margin-right: 15px;
@@ -86,7 +79,7 @@ body {
   border-bottom: 1px solid #858585;
   text-align: center;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .controller div p {
   font-weight: 700;
