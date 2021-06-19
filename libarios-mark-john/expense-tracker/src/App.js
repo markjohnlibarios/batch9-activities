@@ -1,37 +1,43 @@
-import React, { useState } from "react";
+//import React, { useState } from "react";
+import React from "react";
 import "./App.css";
-import ExpenseItem from "./Expenses/ExpenseItem";
-import Card from "./UI/Card";
+import Expenses from "./Expenses/Expenses";
 
 const DUMMY_EXPENSES = [
 	{
 		title: "Car Insurance",
-		amount: "294.67",
-		date: new Date(2020, 5, 28),
+		amount: "1,000,000.00",
+		date: new Date(2020, 5, 3),
 	},
 	{
-		title: "Car Insurance",
-		amount: "294.67",
-		date: new Date(2021, 3, 28),
+		title: "House Insurance",
+		amount: "100,000.00",
+		date: new Date(2021, 3, 8),
 	},
 	{
-		title: "Car Insurance",
-		amount: "294.67",
-		date: new Date(2019, 9, 28),
+		title: "Computer Insurance",
+		amount: "500.00",
+		date: new Date(2019, 9, 16),
 	},
 	{
-		title: "Car Insurance",
+		title: "Phone Insurance",
 		amount: "294.67",
 		date: new Date(2022, 11, 28),
 	},
 ];
+
+/*const DUMMY_EXPENSE = {
+	title: "Car Insurance",
+	amount: "1000000",
+	date: new Date(2021, 5, 19)
+}*/
+
 const App = () => {
-  return (
-	<div className="App">
-		<Card className="expenses">
-			<ExpenseItem />
-		</Card>
-	</div>
-  );
+	return (
+		<div className="App">
+			<Expenses expenses={DUMMY_EXPENSES}/>
+		</div>
+	);
 };
+
 export default App;
