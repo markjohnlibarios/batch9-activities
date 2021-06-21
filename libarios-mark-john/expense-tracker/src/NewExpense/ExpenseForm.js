@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './ExpenseForm.css';
+import Add from './Add';
 
 const ExpenseForm = (props) => {
     const [enteredTitle, setEnteredTitle] = useState("");
@@ -29,14 +30,33 @@ const ExpenseForm = (props) => {
         };
 
         props.onSaveExpenseData(expenseData);
+        clearField();
+    }
+
+    const clearField = () => {
         setEnteredTitle('');
         setEnteredAmount('');
         setEnteredDate('');
     }
 
+    const onClickCancelHandler = (e) => {
+        e.preventDefault();
+        clearField();
+        
+        const formInputs = document.getElementsByClassName("new-expense__controls")[0];
+        formInputs.classList.add('hide');
+        const formButtons = document.getElementsByClassName("new-expense__actions")[0];
+        formButtons.classList.add('hide');
+
+
+        const addNewExpenseButton = document.getElementsByClassName("add")[0];
+        addNewExpenseButton.classList.remove('hide');
+    };
+
     return (
         <form onSubmit={submitHandler}>
-            <div className="new-expense__controls">
+            <Add />
+            <div className="new-expense__controls hide">
                 <div className="new-expense__control">
                     <label>Title</label>
                     <input type="text" value={enteredTitle} onChange={titleChangedHandler} />
@@ -53,8 +73,8 @@ const ExpenseForm = (props) => {
                 </div>
             </div>
 
-            <div className="new-expense__actions">
-                <button type="button">Cancel</button>
+            <div className="new-expense__actions hide">
+                <button type="button" onClick={onClickCancelHandler}>Cancel</button>
                 <button type="submit">Add Expense</button>
             </div>
         </form>
