@@ -7,22 +7,22 @@ import NewExpense from "./NewExpense/NewExpense";
 const DUMMY_EXPENSES = [
 	{
 		title: "Car Insurance",
-		amount: "1,000,000.00",
+		amount: "200",
 		date: new Date(2020, 5, 3),
 	},
 	{
 		title: "House Insurance",
-		amount: "100,000.00",
+		amount: "300",
 		date: new Date(2021, 3, 8),
 	},
 	{
 		title: "Computer Insurance",
-		amount: "500.00",
+		amount: "500",
 		date: new Date(2022, 9, 16),
 	},
 	{
 		title: "Phone Insurance",
-		amount: "294.67",
+		amount: "294",
 		date: new Date(2021, 11, 28),
 	},
 ];
