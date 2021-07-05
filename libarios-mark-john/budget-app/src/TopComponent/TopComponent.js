@@ -43,7 +43,7 @@ const TopComponent = (props) => {
                 <div className="budget__value">{balance('balance')}</div>
                 
                 <div className="budget__income clearfix">
-                    <div className="budget__income--text">Income</div>
+                    <div className="budget__income--text">Income Total</div>
                     <div className="right">
                         <div className="budget__income--value">+ {balance('income')}</div>
                         <div className="budget__income--percentage">&nbsp;</div>
@@ -51,7 +51,7 @@ const TopComponent = (props) => {
                 </div>
                 
                 <div className="budget__expenses clearfix">
-                    <div className="budget__expenses--text">Expenses</div>
+                    <div className="budget__expenses--text">Expenses Total</div>
                     <div className="right clearfix">
                         <div className="budget__expenses--value">- {balance('expense')}</div>
                         <div className="budget__income--percentage">&nbsp;</div>

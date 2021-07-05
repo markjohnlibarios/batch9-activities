@@ -8,6 +8,11 @@ const BottomComponent = (props) => {
         setTypeChange(!isTypeChange);
     };
 
+    const [isAlert, setAlert] = useState(false);
+    const toggleAlertClass = () => {
+        setAlert(!isAlert);
+    };
+
     const [enteredType, setEnteredType] = useState('inc');
     const typeChangedHandler = (event) => {
         setEnteredType(event.target.value);
@@ -35,7 +40,8 @@ const BottomComponent = (props) => {
         //to prevent redirection
 
         if (enteredTitle === '' || enteredAmount === '') {
-            alert('Fill-in all the fields!')
+            //alert('Fill-in all the fields!')
+            toggleAlertClass();
             return false;
         }
 
@@ -55,7 +61,12 @@ const BottomComponent = (props) => {
         <div className="bottom">
             <div className="add">
                 <div className="add__container">
-
+                {/* alert */}
+                <div className={isAlert ? 'alert' : 'alert-hide'}>
+                    <span className="closebtn" onClick={toggleAlertClass}>&times;</span>
+                    <strong>Error!</strong> Fill all fields.
+                </div>
+                {/* alert */}
                     <form onSubmit={submitHandler}>
                         <select
                             className={isTypeChange ? 'add__type red-focus' : 'add__type'}
